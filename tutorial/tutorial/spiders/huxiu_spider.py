@@ -39,7 +39,8 @@ class HuxiuSpider(scrapy.Spider):
         print('cccccccccccccccccccccccc')
         print(response)
         print(type(response))
-        print(response.xpath('//div[@class="navbar-inner"]/div[@class="logo"]/@src'))
+        print(response.xpath('//header/text()'))
+        print(type(response.xpath('//header/text()')))
 
         # for sel in response.xpath('//tbody[@class="investment-list"]/tr'):
         #     item = HuxiuItem()
