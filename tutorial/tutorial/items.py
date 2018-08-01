@@ -14,5 +14,4 @@ class HuxiuItem(scrapy.Item):
     title = scrapy.Field()  	#标题
     url = scrapy.Field()		#链接
     desc = scrapy.Field()		#描述
-    posttime = scrapy.Field()	#发布时间
-    pic = scrapy.Field()		#图片
+    #pic = scrapy.Field()		#图片
