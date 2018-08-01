@@ -40,19 +40,15 @@ class HuxiuSpider(scrapy.Spider):
     def parse(self, response):
         print('cccccccccccccccccccccccc')
         print(response)
-        print(response.body)
-        response.body.decode(response.encoding)
-        #self.html_file.close()
-        # print(response.xpath('//title/text()').extract()[0])
-        # print(type(response.xpath('//title/text()').extract()[0]))
+        #print(response.body)
 
-        # for sel in response.xpath('//tbody[@class="investment-list"]/tr'):
-        #     item = HuxiuItem()
+        for sel in response.xpath('//tbody[@id="investment-list"]/tr'):
+            #item = HuxiuItem()
 
-        #     print(sel.xpath('div[@class="info"]/div[@class="name"]/a/text()'))
-        #     print(sel.xpath('div[@class="info"]/div[@class="name"]/a/text()')[0].extract())
-        #     print(type(sel.xpath('div[@class="info"]/div[@class="name"]/a/text()')[0].extract()))
+            print(sel.xpath('td[@class="cover-info"]/div[@class="avatar square"]/a/@title'))
+            # print(sel.xpath('div[@class="info"]/div[@class="name"]/a/text()')[0].extract())
+            # print(type(sel.xpath('div[@class="info"]/div[@class="name"]/a/text()')[0].extract()))
 
 
-        #     item['title'] = sel.xpath('div[@class="info"]/div[@class="name"]/a/text()')[0].extract()
-        #     print(item['title'])
+            # item['title'] = sel.xpath('div[@class="info"]/div[@class="name"]/a/text()')[0].extract()
+            # print(item['title'])
