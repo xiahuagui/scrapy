@@ -7,7 +7,7 @@ Desc :
 from tutorial.items import HuxiuItem
 import scrapy
 from scrapy.http import Request, FormRequest, HtmlResponse
-from scrapy_splash import SplashRequest,SplashMiddleware,SplashRequest
+#from scrapy_splash import SplashRequest,SplashMiddleware
 
 class HuxiuSpider(scrapy.Spider):
     name = "huxiu"
@@ -16,7 +16,7 @@ class HuxiuSpider(scrapy.Spider):
 
     def start_requests(self):
         print('aaaaaaaaaaaaaaaaaaaaaaaa')
-        yield SplashRequest(url = self.start_urls, callback = self.parse)
+        yield Request(url = self.start_urls, callback = self.parse)
 
     def parse(self, response):
         # print(response)
