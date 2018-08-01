@@ -11,8 +11,8 @@ from scrapy.http import Request, FormRequest, HtmlResponse
 
 class HuxiuSpider(scrapy.Spider):
     name = "huxiu"
-    allowed_domains = ["huxiu.com"]
-    start_urls = "http://www.huxiu.com"
+    allowed_domains = ["itjuzi.com"]
+    start_urls = "http://www.itjuzi.com/"
 
     def start_requests(self):
         print('aaaaaaaaaaaaaaaaaaaaaaaa')
@@ -30,10 +30,10 @@ class HuxiuSpider(scrapy.Spider):
         #     item['desc'] = sel.xpath('div[@class="mob-ctt"]/div[@class="mob-sub"]/text()')[0].extract()
         #     print(item['title'],item['url'],item['desc'],item['pic'])
         print('bbbbbbbbbbbbbbbbbbbbbb')
-        for sel in response.xpath('//div[@class="mod-info-flow"]/div/div[@class="mob-ctt"]'):
-            item = HuxiuItem()
-            item['title'] = sel.xpath('h2/a/text()')[0].extract()
-            item['url'] = sel.xpath('h2/a/@href')[0].extract()
-            url = response.urljoin(item['url'])
-            item['desc'] = sel.xpath('div[@class="mob-sub"]/text()')[0].extract()
-            print(item['title'],item['url'],item['desc'])
+        # for sel in response.xpath('//div[@class="mod-info-flow"]/div/div[@class="mob-ctt"]'):
+        #     item = HuxiuItem()
+        #     item['title'] = sel.xpath('h2/a/text()')[0].extract()
+        #     item['url'] = sel.xpath('h2/a/@href')[0].extract()
+        #     url = response.urljoin(item['url'])
+        #     item['desc'] = sel.xpath('div[@class="mob-sub"]/text()')[0].extract()
+        #     print(item['title'],item['url'],item['desc'])
