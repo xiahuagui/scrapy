@@ -8,15 +8,17 @@ from tutorial.items import HuxiuItem
 import scrapy
 
 class HuxiuSpider(scrapy.Spider):
-    print('bbbbbbbbbbbbbbbbbbbbbbbbbbb')
     name = "huxiu"
     allowed_domains = ["huxiu.com"]
     start_urls = [
         "http://www.huxiu.com/index.php"
     ]
 
-    def parse(self, response):
+    def start_requests(self):
+        yield Request(url = self.start_urls, callback = self.getdata)
         print('aaaaaaaaaaaaaaaaaaaaaaaa')
+
+    def getdata(self, response):
         # print(response)
         # print(type(response))
         # for sel in response.xpath('//div[@class="mod-info-flow"]/div[@class="clearfix"]'):
@@ -27,8 +29,7 @@ class HuxiuSpider(scrapy.Spider):
         #     item['title'] = sel.xpath('div[@class="mob-ctt"]/h2/a/text()')[0].extract()
         #     item['desc'] = sel.xpath('div[@class="mob-ctt"]/div[@class="mob-sub"]/text()')[0].extract()
         #     print(item['title'],item['url'],item['desc'],item['pic'])
-
-
+        print('bbbbbbbbbbbbbbbbbbbbbb')
         for sel in response.xpath('//div[@class="mod-info-flow"]/div/div[@class="mob-ctt"]'):
             item = HuxiuItem()
             item['title'] = sel.xpath('h2/a/text()')[0].extract()
