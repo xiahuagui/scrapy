@@ -15,8 +15,8 @@ class HuxiuSpider(scrapy.Spider):
     ]
 
     def start_requests(self):
-        yield Request(url = self.start_urls, callback = self.parse)
         print('aaaaaaaaaaaaaaaaaaaaaaaa')
+        yield Request(url = self.start_urls, callback = self.parse)
 
     def parse(self, response):
         # print(response)
