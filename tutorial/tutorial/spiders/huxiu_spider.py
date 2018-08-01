@@ -15,6 +15,7 @@ class HuxiuSpider(scrapy.Spider):
     ]
 
     def parse(self, response):
+        print('aaaaaaaaaaaaaaaaaaaaaaaa')
         print(response)
         print(type(response))
         for sel in response.xpath('//div[@class="mod-info-flow"]/div[@class="clearfix"]'):
