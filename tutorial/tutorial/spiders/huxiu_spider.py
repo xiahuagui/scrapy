@@ -38,8 +38,8 @@ class HuxiuSpider(scrapy.Spider):
     def parse(self, response):
         print('cccccccccccccccccccccccc')
         print(response)
-        print(response.xpath('//body/text()'))
-        print(type(response.xpath('//body/text()')))
+        print(response.xpath('//title/text()'))
+        print(type(response.xpath('//title/text()')))
 
         # for sel in response.xpath('//tbody[@class="investment-list"]/tr'):
         #     item = HuxiuItem()
