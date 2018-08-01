@@ -45,7 +45,7 @@ class HuxiuSpider(scrapy.Spider):
         for sel in response.xpath('//tbody[@id="investment-list"]/tr'):
             #item = HuxiuItem()
 
-            print(sel.xpath('td[@class="cover-info"]/div[@class="avatar square"]/a/@title'))
+            print(sel.xpath('td[@class="cover-info"]/div[@class="avatar square"]/a/@title').extract()[0])
             # print(sel.xpath('div[@class="info"]/div[@class="name"]/a/text()')[0].extract())
             # print(type(sel.xpath('div[@class="info"]/div[@class="name"]/a/text()')[0].extract()))
 
