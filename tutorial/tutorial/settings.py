@@ -21,6 +21,8 @@ NEWSPIDER_MODULE = 'tutorial.spiders'
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = False
 LOG_LEVEL = "INFO"
+#HTTPERROR_ALLOWED_CODES = [404]
+HTTPERROR_ALLOWED_CODES = [500]
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
