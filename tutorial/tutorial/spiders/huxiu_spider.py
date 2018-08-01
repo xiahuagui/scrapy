@@ -14,6 +14,8 @@ class HuxiuSpider(scrapy.Spider):
     name = "huxiu"
     allowed_domains = ["vc.cn"]
     start_urls = "https://www.vc.cn/investments"
+
+    html_file = "/usr/www/scrapy/tutorial/test.log"
     # start_urls = [
     #     "https://www.vc.cn/investments"
     # ]
@@ -38,8 +40,10 @@ class HuxiuSpider(scrapy.Spider):
     def parse(self, response):
         print('cccccccccccccccccccccccc')
         print(response)
-        print(response.xpath('//title/text()').extract()[0])
-        print(type(response.xpath('//title/text()').extract()[0]))
+        self.html_file.write(response.body.decode("utf-8"))
+        self.html_file.close()
+        # print(response.xpath('//title/text()').extract()[0])
+        # print(type(response.xpath('//title/text()').extract()[0]))
 
         # for sel in response.xpath('//tbody[@class="investment-list"]/tr'):
         #     item = HuxiuItem()
