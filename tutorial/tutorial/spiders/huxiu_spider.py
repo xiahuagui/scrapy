@@ -40,9 +40,6 @@ class HuxiuSpider(scrapy.Spider):
     def parse(self, response):
         print('cccccccccccccccccccccccc')
         print(response)
-        print(response.body_as_unicode())
-
-        return
         #print(response.body)
 
         for sel in response.xpath('//tbody[@id="investment-list"]/tr'):
