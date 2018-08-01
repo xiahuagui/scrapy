@@ -6,6 +6,7 @@ Desc :
 """
 from tutorial.items import HuxiuItem
 import scrapy
+from scrapy.http import Request, FormRequest, HtmlResponse
 
 class HuxiuSpider(scrapy.Spider):
     name = "huxiu"
