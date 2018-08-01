@@ -11,7 +11,7 @@ from scrapy.http import Request, FormRequest, HtmlResponse
 class HuxiuSpider(scrapy.Spider):
     name = "huxiu"
     allowed_domains = ["huxiu.com"]
-    start_urls = "http://www.huxiu.com/index.php"
+    start_urls = "http://www.huxiu.com"
 
     def start_requests(self):
         print('aaaaaaaaaaaaaaaaaaaaaaaa')
