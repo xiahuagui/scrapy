@@ -8,6 +8,7 @@ from tutorial.items import HuxiuItem
 import scrapy
 
 class HuxiuSpider(scrapy.Spider):
+    print('bbbbbbbbbbbbbbbbbbbbbbbbbbb')
     name = "huxiu"
     allowed_domains = ["huxiu.com"]
     start_urls = [
