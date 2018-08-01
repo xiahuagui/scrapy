@@ -40,7 +40,7 @@ class HuxiuSpider(scrapy.Spider):
     def parse(self, response):
         print('cccccccccccccccccccccccc')
         print(response)
-        self.html_file.write(response.body.decode("utf-8"))
+        self.html_file.write(TextResponse.text)
         self.html_file.close()
         # print(response.xpath('//title/text()').extract()[0])
         # print(type(response.xpath('//title/text()').extract()[0]))
