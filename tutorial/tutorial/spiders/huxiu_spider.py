@@ -12,15 +12,19 @@ from scrapy.http import Request, FormRequest, HtmlResponse
 class HuxiuSpider(scrapy.Spider):
     print('aaaaaaaaaaaaaaaaaaaaaa')
     name = "huxiu"
-    allowed_domains = ["vc.cn"]
+    allowed_domains = ["huxiu.com"]
     #start_urls = "https://www.vc.cn/investments"
 
     start_urls = [
-        "https://www.vc.cn/investments"
+        "https://www.huxiu.com/" #"https://www.vc.cn/investments"
     ]
 
     def parse(self, response):
         print('bbbbbbbbbbbbbbbbbbbbbbbbb')
+        print(response)
+        print(response.body)
+        return
+        
         for sel in response.xpath('//tbody[@id="investment-list"]/tr'):
             #item = HuxiuItem()
 
