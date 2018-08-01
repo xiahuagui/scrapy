@@ -15,10 +15,10 @@ class HuxiuSpider(scrapy.Spider):
     ]
 
     def start_requests(self):
-        yield Request(url = self.start_urls, callback = self.getdata)
+        yield Request(url = self.start_urls, callback = self.parse)
         print('aaaaaaaaaaaaaaaaaaaaaaaa')
 
-    def getdata(self, response):
+    def parse(self, response):
         # print(response)
         # print(type(response))
         # for sel in response.xpath('//div[@class="mod-info-flow"]/div[@class="clearfix"]'):
