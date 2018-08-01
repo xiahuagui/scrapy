@@ -8,7 +8,11 @@
 import scrapy
 
 
-class TutorialItem(scrapy.Item):
+class HuxiuItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
-    pass
+    title = scrapy.Field()  	#标题
+    url = scrapy.Field()		#链接
+    desc = scrapy.Field()		#描述
+    posttime = scrapy.Field()	#发布时间
+    pic = scrapy.Field()		#图片
