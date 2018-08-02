@@ -11,13 +11,10 @@ import logging
 #from scrapy_splash import SplashRequest,SplashMiddleware
 
 class HuxiuSpider(scrapy.Spider):
-    logging.getLogger('scrapy.core.scraper').setLevel(logging.WARNING)
-    logging.getLogger('scrapy.core.engine').setLevel(logging.WARNING)
-    logging.getLogger('scrapy.utils.log').setLevel(logging.WARNING)
-    logging.getLogger('scrapy.crawler').setLevel(logging.WARNING)
-    logging.getLogger('scrapy.middleware').setLevel(logging.WARNING)
-    
-    logging.info('aaaaaaaaaaaaaaaaaaaaaa')
+    logging.basicConfig(level=logging.WARNING)
+
+
+    logging.warning(u'aaaaaaaaaaaaaaaaaaaaaa')
     name = "huxiu"
     allowed_domains = ["huxiu.com"]
     #start_urls = "https://www.vc.cn/investments"
@@ -27,8 +24,8 @@ class HuxiuSpider(scrapy.Spider):
     ]
 
     def parse(self, response):
-        logging.info('bbbbbbbbbbbbbbbbbbbbbbbbb')
-        logging.info(response)
+        logging.warning(u'bbbbbbbbbbbbbbbbbbbbbbbbb')
+        logging.warning(response)
         #print(response.body)
         return
         
