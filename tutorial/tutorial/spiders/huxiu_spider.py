@@ -7,10 +7,11 @@ Desc :
 from tutorial.items import HuxiuItem
 import scrapy
 from scrapy.http import Request, FormRequest, HtmlResponse
+import logging
 #from scrapy_splash import SplashRequest,SplashMiddleware
 
 class HuxiuSpider(scrapy.Spider):
-    print('aaaaaaaaaaaaaaaaaaaaaa')
+    logging.info('aaaaaaaaaaaaaaaaaaaaaa')
     name = "huxiu"
     allowed_domains = ["huxiu.com"]
     #start_urls = "https://www.vc.cn/investments"
@@ -20,9 +21,9 @@ class HuxiuSpider(scrapy.Spider):
     ]
 
     def parse(self, response):
-        print('bbbbbbbbbbbbbbbbbbbbbbbbb')
-        print(response)
-        print(response.body)
+        logging.info('bbbbbbbbbbbbbbbbbbbbbbbbb')
+        logging.info(response)
+        #print(response.body)
         return
         
         for sel in response.xpath('//tbody[@id="investment-list"]/tr'):
