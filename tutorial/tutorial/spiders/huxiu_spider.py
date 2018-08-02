@@ -9,9 +9,10 @@ import scrapy
 from scrapy.http import Request, FormRequest, HtmlResponse
 import logging
 #from scrapy_splash import SplashRequest,SplashMiddleware
+logging.basicConfig(level=logging.ERROR)
 
 class HuxiuSpider(scrapy.Spider):
-    logging.basicConfig(level=logging.ERROR)
+    
 
 
     logging.error(u'aaaaaaaaaaaaaaaaaaaaaa')
