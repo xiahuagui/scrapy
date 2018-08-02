@@ -12,9 +12,6 @@ import logging
 logging.basicConfig(level=logging.ERROR)
 
 class HuxiuSpider(scrapy.Spider):
-    
-
-
     logging.error(u'aaaaaaaaaaaaaaaaaaaaaa')
     name = "huxiu"
     allowed_domains = ["huxiu.com"]
