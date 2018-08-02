@@ -20,13 +20,12 @@ class HuxiuSpider(scrapy.Spider):
     def parse(self, response):
         print(response)
         for sel in response.xpath('//tbody[@id="investment-list"]/tr'):
-            #item = HuxiuItem()
-            print(response.url)
-            print(sel.xpath('td[@class="cover-info"]/div[@class="avatar square"]/a/@title').extract()[0])
-            print(sel.xpath('td[@class="cover-info"]/div[@class="avatar square"]/a/@href').extract()[0])
-            url = response.urljoin(sel.xpath('td[@class="cover-info"]/div[@class="avatar square"]/a/@href').extract()[0])
-            print(url)
-            print(sel.xpath('td[@class="cover-info"]/div[@class="avatar square"]/a/img/@src').extract()[0])
+            item = HuxiuItem()
+            item['title'] = sel.xpath('td[@class="cover-info"]/div[@class="avatar square"]/a/@title').extract()[0]
+            item['url'] = sel.xpath('td[@class="cover-info"]/div[@class="avatar square"]/a/@href').extract()[0]
+            url = response.urljoin(item['url'])
+            item['pic'] = sel.xpath('td[@class="cover-info"]/div[@class="avatar square"]/a/img/@data-echo').extract()[0]
+            print(item['title'], item['url'], item['pic'])
 
     # def start_requests(self):
     #     yield Request(url = self.start_urls, callback = self.parse)
