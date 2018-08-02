@@ -26,6 +26,7 @@ class HuxiuSpider(scrapy.Spider):
     def parse(self, response):
         logging.warning(u'bbbbbbbbbbbbbbbbbbbbbbbbb')
         logging.warning(response)
+        print('abcccccccccccccccccccc')
         #print(response.body)
         return
         
