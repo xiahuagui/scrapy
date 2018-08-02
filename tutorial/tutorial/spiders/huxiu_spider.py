@@ -7,41 +7,31 @@ Desc :
 from tutorial.items import HuxiuItem
 import scrapy
 from scrapy.http import Request, FormRequest, HtmlResponse
-#import logging
-#from scrapy_splash import SplashRequest,SplashMiddleware
-#logging.basicConfig(level=logging.ERROR)
 
 class HuxiuSpider(scrapy.Spider):
     print('aaaaaaaaaaaaaaaaaaaaaa')
     name = "huxiu"
-    allowed_domains = ["huxiu.com"]
+    allowed_domains = ["vc.cn"]
     #start_urls = "https://www.vc.cn/investments"
-
     start_urls = [
-        "https://www.huxiu.com/" #"https://www.vc.cn/investments"
+        "https://www.vc.cn/investments"
     ]
 
     def parse(self, response):
-        print('bbbbbbbbbbbbbbbbbbbbbbbbb')
         print(response)
-        print('abcccccccccccccccccccc')
-        #print(response.body)
-        return
-        
         for sel in response.xpath('//tbody[@id="investment-list"]/tr'):
             #item = HuxiuItem()
-
+            print(response.url)
             print(sel.xpath('td[@class="cover-info"]/div[@class="avatar square"]/a/@title').extract()[0])
-            # print(item['title'])
+            print(sel.xpath('td[@class="cover-info"]/div[@class="avatar square"]/a/@href').extract()[0])
+            url = response.urljoin(sel.xpath('td[@class="cover-info"]/div[@class="avatar square"]/a/@href').extract()[0])
+            print(url)
+            print(sel.xpath('td[@class="cover-info"]/div[@class="avatar square"]/a/img/@src').extract()[0])
 
     # def start_requests(self):
-    #     print('bbbbbbbbbbbbbbbbbbbbbb')
     #     yield Request(url = self.start_urls, callback = self.parse)
 
     # def parse(self, response):
-    #     print('cccccccccccccccccccccccc')
-
     #     for sel in response.xpath('//tbody[@id="investment-list"]/tr'):
     #         #item = HuxiuItem()
-
     #         print(sel.xpath('td[@class="cover-info"]/div[@class="avatar square"]/a/@title').extract()[0])
