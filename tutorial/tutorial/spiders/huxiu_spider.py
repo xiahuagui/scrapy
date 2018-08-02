@@ -22,10 +22,12 @@ class HuxiuSpider(scrapy.Spider):
         for sel in response.xpath('//tbody[@id="investment-list"]/tr'):
             item = HuxiuItem()
             item['title'] = sel.xpath('td[@class="cover-info"]/div[@class="avatar square"]/a/@title').extract()[0]
-            item['url'] = sel.xpath('td[@class="cover-info"]/div[@class="avatar square"]/a/@href').extract()[0]
-            url = response.urljoin(item['url'])
+            url = sel.xpath('td[@class="cover-info"]/div[@class="avatar square"]/a/@href').extract()[0]
+            item['url'] = response.urljoin(url)
             item['pic'] = sel.xpath('td[@class="cover-info"]/div[@class="avatar square"]/a/img/@data-echo').extract()[0]
-            print(item['title'], item['url'], item['pic'])
+            print(item['title'])
+            print(item['url'])
+            print(item['pic'])
 
     # def start_requests(self):
     #     yield Request(url = self.start_urls, callback = self.parse)
