@@ -11,6 +11,7 @@ import logging
 #from scrapy_splash import SplashRequest,SplashMiddleware
 
 class HuxiuSpider(scrapy.Spider):
+    logging.basicConfig(level=logging.ERROR)
     logging.info('aaaaaaaaaaaaaaaaaaaaaa')
     name = "huxiu"
     allowed_domains = ["huxiu.com"]
