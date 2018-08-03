@@ -25,7 +25,6 @@ class HuxiuPipeline(object):
 
     def process_item(self, item, spider):
     	data = (item["title"].encode("utf-8"),item["url"].encode("utf-8"),item["pic"].encode("utf-8"))
-
     	sql = "INSERT INTO vc_data (title, url, pic) VALUES ( '%s', '%s', '%s' )"
 		self.cursor.execute(sql % data)
 		self.connect.commit()
