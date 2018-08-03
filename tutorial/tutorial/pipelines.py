@@ -22,10 +22,10 @@ class HuxiuPipeline(object):
 		# 获取游标
 		self.cursor = connect.cursor()
 
-    def process_item(self, item, spider):
-    	data = (item["title"].encode("utf-8"),item["url"].encode("utf-8"),item["pic"].encode("utf-8"))
-    	sql = "INSERT INTO vc_data (title, url, pic) VALUES ( '%s', '%s', '%s' )"
+	def process_item(self, item, spider):
+		data = (item["title"].encode("utf-8"),item["url"].encode("utf-8"),item["pic"].encode("utf-8"))
+		sql = "INSERT INTO vc_data (title, url, pic) VALUES ( '%s', '%s', '%s' )"
 		self.cursor.execute(sql % data)
 		self.connect.commit()
 		print('成功插入', self.cursor.rowcount, '条数据')
-        #return item
+	    #return item
