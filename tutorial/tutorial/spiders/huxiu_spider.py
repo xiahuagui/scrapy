@@ -17,7 +17,6 @@ class HuxiuSpider(scrapy.Spider):
     ]
 
     def parse(self, response):
-        print(response)
         for sel in response.xpath('//tbody[@id="investment-list"]/tr'):
             item = HuxiuItem()
             item['title'] = sel.xpath('td[@class="cover-info"]/div[@class="avatar square"]/a/@title').extract()[0]

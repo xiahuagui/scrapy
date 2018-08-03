@@ -11,7 +11,7 @@ import pymysql.cursors
 class HuxiuPipeline(object):
 	def __init__(self):
 		# 连接数据库
-		connect = pymysql.Connect(
+		self.connect = pymysql.Connect(
 		    host='localhost',
 		    port=3306,
 		    user='dev',
@@ -20,10 +20,14 @@ class HuxiuPipeline(object):
 		    charset='utf8'
 		)
 		# 获取游标
-		cursor = connect.cursor()
+		self.cursor = connect.cursor()
 
 
     def process_item(self, item, spider):
-    	print(item)
-    	print(type(item))
+    	data = (item["title"].encode("utf-8"),item["url"].encode("utf-8"),item["pic"].encode("utf-8"))
+
+    	sql = "INSERT INTO vc_data (title, url, pic) VALUES ( '%s', '%s', '%s' )"
+		self.cursor.execute(sql % data)
+		self.connect.commit()
+		print('成功插入', self.cursor.rowcount, '条数据')
         #return item
