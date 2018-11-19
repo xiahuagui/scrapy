@@ -1,4 +1,4 @@
-import cv2
+import cv3 as cv2
 import matplotlib.pyplot as plt
 import imutils
 from imutils.perspective import four_point_transform
