@@ -125,8 +125,7 @@ def main():
 	processed_img = detect_cnt_again(poly_node_list, image)
 	cv2.imwrite('/usr/www/scrapy/py/33.jpg', processed_img)
 
-
-    return
+	return
 
 
 	#canny边缘检测
