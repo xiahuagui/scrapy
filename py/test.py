@@ -5,11 +5,11 @@ from imutils.perspective import four_point_transform
 
 def main():
 	#读入图片
-	image = cv2.imread("./test.jpg")
+	image = cv2.imread("/usr/www/scrapy/py/test.jpg")
 	#转换为灰度图像
 	gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
-	cv2.imwrite('11.jpg', gray)
+	cv2.imwrite('/usr/www/scrapy/py/11.jpg', gray)
 
 	#高斯滤波
 	blurred = cv2.GaussianBlur(gray, (3, 3), 0)
@@ -28,7 +28,7 @@ def main():
 	#这一步可有可无，主要是增加一圈白框，以免刚好卷子边框压线后期边缘检测无果。好的样本图就不用考虑这种问题
 	blurred = cv2.copyMakeBorder(blurred,5,5,5,5,cv2.BORDER_CONSTANT,value=(255,255,255))
 
-	cv2.imwrite('22.jpg', blurred)
+	cv2.imwrite('/usr/www/scrapy/py/22.jpg', blurred)
 
 
 
