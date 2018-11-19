@@ -167,11 +167,10 @@ def main():
 	print(len(Answer))
 	#return
 
-	xt1 = [69, 132, 255, 378, 501, 651, 723, 846, 969, 1092, 1233, 1314, 1437, 1560, 1680, 1824, 1905, 2028, 2154, 2280, 2370]  #选项左侧x坐标
-	yt1 = [948, 1017, 1089, 1155, 1227, 1317, 1383, 1455, 1524, 1593, 1683, 1752, 1821, 1893, 1962, 2001]                       #选项上测y坐标
+	xt1 = [69, 132, 255, 378, 501, 651, 723, 846, 969, 1092, 1233, 1314, 1437, 1560, 1680, 1824, 1905, 2028, 2154, 2280, 2370]  #选项左侧x坐标 21
+	yt1 = [948, 1017, 1089, 1155, 1227, 1317, 1383, 1455, 1524, 1593, 1683, 1752, 1821, 1893, 1962, 2001]                       #选项上测y坐标 16
 
-	IDAnswer=[]
-	IDAnswer1 = {}
+	IDAnswer = {}
 	for i in Answer:
 	    for j in range(0,len(xt1)-1):
 	        if i[0]>xt1[j] and i[0]<xt1[j+1]:
@@ -181,21 +180,26 @@ def main():
 	                    if rs[1] == "":
 	                    	print("存在题号太宽的情况，即为无效值\n")
 	                    	continue
-	                    if rs[0] in IDAnswer1:
-	                    	IDAnswer1[rs[0]].append(rs[1])
-	                    	IDAnswer1[rs[0]].sort()  
+	                    if rs[0] in IDAnswer:
+	                    	IDAnswer[rs[0]].append(rs[1])
+	                    	IDAnswer[rs[0]].sort()  
 	                    else:
-	                    	IDAnswer1[rs[0]] = []
-	                    	IDAnswer1[rs[0]].append(rs[1])
-	                    IDAnswer.append(judge0(j,k))
-	#对答案部分重新排序，以最好的方式输出
-	IDAnswer.sort() 
-	print(IDAnswer)
-	print(len(IDAnswer))
+	                    	IDAnswer[rs[0]] = []
+	                    	IDAnswer[rs[0]].append(rs[1])
 
-	IDAnswer1.sort() 
-	print(IDAnswer1)
-	print(len(IDAnswer1))
+	if len(IDAnswer) <= 0:
+		print("白卷，没有任何结果\n")
+		return
+	result = {}
+	for key in range(1, len(IDAnswer)): #之后改为总题数 没写的自然就定为：题号：空
+		if key not in IDAnswer:
+			result[key] = ""
+			continue
+		result[key] = IDAnswer[key]
+		
+
+	print(result)
+	print(len(result))
 
 
 def judgey0(y):
