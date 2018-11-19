@@ -171,17 +171,30 @@ def main():
 	yt1 = [948, 1017, 1089, 1155, 1227, 1317, 1383, 1455, 1524, 1593, 1683, 1752, 1821, 1893, 1962, 2001]                       #选项上测y坐标
 
 	IDAnswer=[]
+	IDAnswer1 = {}
 	for i in Answer:
 	    for j in range(0,len(xt1)-1):
 	        if i[0]>xt1[j] and i[0]<xt1[j+1]:
 	            for k in range(0,len(yt1)-1):
 	                if i[1]>yt1[k] and i[1]<yt1[k+1]:
-	                    judge0(j,k)
+	                    rs = judge0(j,k)
+	                    if rs[1] == "":
+	                    	print("存在题号太宽的情况，即为无效值\n")
+	                    	continue
+	                    if IDAnswer1[rs[0]]:
+	                    	IDAnswer1[rs[0]].append(rs[1])
+	                    	IDAnswer1[rs[0]].sort()  
+	                    else:
+	                    	IDAnswer1[rs[0]] = []
+	                    	IDAnswer1[rs[0]].append(rs[1])
 	                    IDAnswer.append(judge0(j,k))
 	#对答案部分重新排序，以最好的方式输出
 	IDAnswer.sort() 
 	print(IDAnswer)
 	print(len(IDAnswer))
+
+	print(IDAnswer1)
+	print(len(IDAnswer1))
 
 
 def judgey0(y):
@@ -200,6 +213,8 @@ def judgex0(x):
         return 'C'
     elif(x%5==4):
         return 'D'
+    elif(x%5==0):  #如果是题号 返回空
+    	return ''
 def judge0(x,y):
     if x/5<1 :
         #print(judgey0(y))
