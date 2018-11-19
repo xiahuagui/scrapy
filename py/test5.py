@@ -52,6 +52,9 @@ def main():
 	      cv2.CHAIN_APPROX_TC89_L1，CV_CHAIN_APPROX_TC89_KCOS使用teh-Chinl chain 近似算法
 	'''
 	cnts = cv2.findContours(edged, cv2.RETR_EXTERNAL,cv2.CHAIN_APPROX_SIMPLE)
+
+	print(cnts)
+
 	cnts = cnts[0] if imutils.is_cv2() else cnts[1]
 
 	docCnt = None
@@ -71,6 +74,9 @@ def main():
 	elif len(cnts)<=0:
 		print("未找到答题卡轮廓，重新扫描\n")
 		return
+
+	print(docCnt)
+	return
 
 	newimage = image.copy()
 	for i in docCnt:
