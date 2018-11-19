@@ -9,7 +9,7 @@ def main():
 	#转换为灰度图像
 	gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
-	cv2.imwrite('/usr/www/scrapy/py/11.jpg', gray)
+	# cv2.imwrite('/usr/www/scrapy/py/11.jpg', gray)
 
 	#高斯滤波
 	blurred = cv2.GaussianBlur(gray, (3, 3), 0)
@@ -28,7 +28,7 @@ def main():
 	#这一步可有可无，主要是增加一圈白框，以免刚好卷子边框压线后期边缘检测无果。好的样本图就不用考虑这种问题
 	blurred = cv2.copyMakeBorder(blurred,5,5,5,5,cv2.BORDER_CONSTANT,value=(255,255,255))
 
-	cv2.imwrite('/usr/www/scrapy/py/22.jpg', blurred)
+	# cv2.imwrite('/usr/www/scrapy/py/22.jpg', blurred)
 
 
 
@@ -78,8 +78,8 @@ def main():
 	paper = four_point_transform(image, docCnt.reshape(4, 2))
 	warped = four_point_transform(gray, docCnt.reshape(4, 2))
 
-	cv2.imwrite('/usr/www/scrapy/py/33.jpg', paper)
-	cv2.imwrite('/usr/www/scrapy/py/44.jpg', warped)
+	# cv2.imwrite('/usr/www/scrapy/py/33.jpg', paper)
+	# cv2.imwrite('/usr/www/scrapy/py/44.jpg', warped)
 
 
 	# 对灰度图应用二值化算法
@@ -97,8 +97,8 @@ def main():
 	#二进制二值化
 	ChQImg = cv2.threshold(ChQImg, 100, 225, cv2.THRESH_BINARY)[1]
 
-	cv2.imwrite('/usr/www/scrapy/py/55.jpg', thresh)
-	cv2.imwrite('/usr/www/scrapy/py/66.jpg', ChQImg)
+	# cv2.imwrite('/usr/www/scrapy/py/55.jpg', thresh)
+	# cv2.imwrite('/usr/www/scrapy/py/66.jpg', ChQImg)
 	'''
 	    threshold参数说明
 	    第一个参数 src    指原图像，原图像应该是灰度图。
@@ -131,7 +131,7 @@ def main():
 	            cv2.drawContours(paper, c, -1, (0, 0, 255), 5, lineType=0)
 	            cv2.circle(paper, (cX, cY), 7, (255, 255, 255), -1)
 
-	            cv2.imwrite('/usr/www/scrapy/py/77.jpg', paper)
+	            # cv2.imwrite('/usr/www/scrapy/py/77.jpg', paper)
 
 	            #保存题目坐标信息
 	            Answer.append((cX, cY))
