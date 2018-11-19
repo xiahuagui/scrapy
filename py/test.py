@@ -138,7 +138,7 @@ def main():
 	            cv2.drawContours(paper, c, -1, (0, 0, 255), 5, lineType=0)
 	            cv2.circle(paper, (cX, cY), 7, (255, 255, 255), -1)
 
-	            cv2.imwrite('/usr/www/scrapy/py/77.jpg', ChQImg)
+	            cv2.imwrite('/usr/www/scrapy/py/77.jpg', paper)
 
 	            #保存题目坐标信息
 	            Answer.append((cX, cY))
