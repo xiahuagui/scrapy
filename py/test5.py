@@ -25,7 +25,7 @@ def main():
 	    第六个参数param1    指与方法有关的参数。对方法CV_ADAPTIVE_THRESH_MEAN_C 和 CV_ADAPTIVE_THRESH_GAUSSIAN_C， 它是一个从均值或加权均值提取的常数, 尽管它可以是负数。
 	'''
 	#这一步可有可无，主要是增加一圈白框，以免刚好卷子边框压线后期边缘检测无果。好的样本图就不用考虑这种问题
-	#blurred = cv2.copyMakeBorder(blurred,5,5,5,5,cv2.BORDER_CONSTANT,value=(255,255,255))
+	blurred = cv2.copyMakeBorder(blurred,5,5,5,5,cv2.BORDER_CONSTANT,value=(255,255,255))
 
 	cv2.imwrite('/usr/www/scrapy/py/11.jpg', blurred)
 
@@ -51,7 +51,7 @@ def main():
 	                       4个点来保存轮廓信息
 	      cv2.CHAIN_APPROX_TC89_L1，CV_CHAIN_APPROX_TC89_KCOS使用teh-Chinl chain 近似算法
 	'''
-	cnts = cv2.findContours(edged, cv2.RETR_CCOMP,cv2.CHAIN_APPROX_SIMPLE)
+	cnts = cv2.findContours(edged, cv2.RETR_EXTERNAL,cv2.CHAIN_APPROX_SIMPLE)
 	cnts = cnts[0] if imutils.is_cv2() else cnts[1]
 
 	docCnt = None
