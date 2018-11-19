@@ -117,8 +117,6 @@ def main():
 	cnts = cv2.findContours(ChQImg, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
 	cnts = cnts[0] if imutils.is_cv2() else cnts[1]
 	Answer = []
-	xt1 = []
-	yt1 = []
 
 	for c in cnts:
 	     # 计算轮廓的边界框，然后利用边界框数据计算宽高比
@@ -128,12 +126,7 @@ def main():
 	            cX = int(M["m10"] / M["m00"])
 	            cY = int(M["m01"] / M["m00"])
 
-	            xt1.append(cX)
-	            yt1.append(cY)
 
-
-	            print(cX)
-	            print(cY)
 	            #绘制中心及其轮廓
 	            cv2.drawContours(paper, c, -1, (0, 0, 255), 5, lineType=0)
 	            cv2.circle(paper, (cX, cY), 7, (255, 255, 255), -1)
@@ -147,11 +140,7 @@ def main():
 	        
 	print(Answer)
 	print(len(Answer))
-	return
 	
-	print(len(xt1))
-	print(len(yt1))
-	return
 # 	{'m00': 2371.5, 'm10': 5520046.833333333, 'm01': 2288344.0, 'm20': 12849937623.2
 # 5, 'm11': 5326413070.791666, 'm02': 2208299049.083333, 'm30': 29915614290130.25,
 #  'm21': 12399011106072.367, 'm12': 5140025525090.0, 'm03': 2131242311006.1, 'mu2
@@ -163,6 +152,8 @@ def main():
 # 696}
 
 	#return
+	xt1 = [69, 132, 255, 378, 501, 651, 723, 846, 969, 1092, 1233, 1314, 1437, 1560, 1680, 1824, 1905, 2028, 2154, 2280]
+	yt1 = [948, 1017, 1089, 1155, 1227, 1317, 1383, 1455, 1524, 1593, 1683, 1752, 1821, 1893, 1962]
 
 	IDAnswer=[]
 	for i in Answer:
