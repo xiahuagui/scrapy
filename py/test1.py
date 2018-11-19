@@ -181,7 +181,7 @@ def main():
 	                    if rs[1] == "":
 	                    	print("存在题号太宽的情况，即为无效值\n")
 	                    	continue
-	                    if IDAnswer1[rs[0]]:
+	                    if rs[0] in IDAnswer1:
 	                    	IDAnswer1[rs[0]].append(rs[1])
 	                    	IDAnswer1[rs[0]].sort()  
 	                    else:
