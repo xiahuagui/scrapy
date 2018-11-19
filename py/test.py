@@ -33,6 +33,8 @@ def main():
 
 	#canny边缘检测
 	edged = cv2.Canny(blurred, 10, 100)
+
+	cv2.imwrite('/usr/www/scrapy/py/11_1.jpg', edged)
 	# 从边缘图中寻找轮廓，然后初始化答题卡对应的轮廓
 	'''
 	findContours

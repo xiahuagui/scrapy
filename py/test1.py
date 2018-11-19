@@ -33,6 +33,8 @@ def main():
 
 	#canny边缘检测
 	edged = cv2.Canny(blurred, 10, 100)
+
+	cv2.imwrite('/usr/www/scrapy/py/11_1.jpg', edged)
 	# 从边缘图中寻找轮廓，然后初始化答题卡对应的轮廓
 	'''
 	findContours
@@ -45,7 +47,7 @@ def main():
 	     cv2.RETR_TREE 建立一个等级树结构的轮廓。
 	method --  轮廓的近似办法：
 	     cv2.CHAIN_APPROX_NONE 存储所有的轮廓点，相邻的两个点的像素位置差不超过1，即max （abs (x1 - x2), abs(y2 - y1) == 1
-	     cv2.CHAIN_APPROX_SIMPLE压缩水平方向，垂直方向，对角线方向的元素，只保留该方向的终点坐标，例如一个矩形轮廓只需
+	     cv2.CHAIN_APPROX_SIMPLE 压缩水平方向，垂直方向，对角线方向的元素，只保留该方向的终点坐标，例如一个矩形轮廓只需
 	                       4个点来保存轮廓信息
 	      cv2.CHAIN_APPROX_TC89_L1，CV_CHAIN_APPROX_TC89_KCOS使用teh-Chinl chain 近似算法
 	'''
