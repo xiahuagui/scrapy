@@ -191,7 +191,7 @@ def main():
 		print("白卷，没有任何结果\n")
 		return
 	result = {}
-	for key in range(1, len(IDAnswer)): #之后改为总题数 没写的自然就定为：题号：空
+	for key in range(1, len(IDAnswer)+1): #之后改为总题数 没写的自然就定为：题号：空
 		if key not in IDAnswer:
 			result[key] = ""
 			continue
