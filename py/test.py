@@ -66,7 +66,7 @@ def main():
 	        if len(approx) == 4:
 	            docCnt = approx
 	            break
-	else if len(cnts)<=0:
+	elif len(cnts)<=0:
 		print("未找到答题卡轮廓，重新扫描\n")
 		return
 
