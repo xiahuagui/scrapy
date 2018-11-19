@@ -57,6 +57,10 @@ def main():
 	cnts = cnts[0] if imutils.is_cv2() else cnts[1]
 	cnts1 = cnts[1] if imutils.is_cv2() else cnts[2]
 
+	print(len(cnts))
+	print(len(cnts1))
+	return
+
 	docCnt = None
 	# 确保至少有一个轮廓被找到
 	if len(cnts) > 0:
