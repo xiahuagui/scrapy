@@ -118,7 +118,6 @@ def main():
 	for c in cnts:
 	     # 计算轮廓的边界框，然后利用边界框数据计算宽高比
 	      (x, y, w, h) = cv2.boundingRect(c)
-	      if y>900 and y<2000:
 	      if (w > 60 & h > 20)and y>900 and y<2000:
 	            M = cv2.moments(c)
 	            cX = int(M["m10"] / M["m00"])
