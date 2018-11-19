@@ -121,7 +121,7 @@ def main():
 
 	cv2.imwrite('/usr/www/scrapy/py/22.jpg', newimage)
 
-	return
+	return 
 
 
 	paper = four_point_transform(image, docCnt.reshape(4, 2))
