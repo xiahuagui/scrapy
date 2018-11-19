@@ -131,6 +131,9 @@ def main():
 	            xt1.append(cX)
 	            yt1.append(cY)
 
+
+	            print(cX)
+	            print(cY)
 	            #绘制中心及其轮廓
 	            cv2.drawContours(paper, c, -1, (0, 0, 255), 5, lineType=0)
 	            cv2.circle(paper, (cX, cY), 7, (255, 255, 255), -1)
