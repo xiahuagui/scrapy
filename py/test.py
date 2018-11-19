@@ -78,6 +78,9 @@ def main():
 	paper = four_point_transform(image, docCnt.reshape(4, 2))
 	warped = four_point_transform(gray, docCnt.reshape(4, 2))
 
+	cv2.imwrite('/usr/www/scrapy/py/33.jpg', paper)
+	cv2.imwrite('/usr/www/scrapy/py/44.jpg', warped)
+
 
 	# 对灰度图应用二值化算法
 	thresh=cv2.adaptiveThreshold(warped,255,cv2.ADAPTIVE_THRESH_MEAN_C,cv2.THRESH_BINARY,53,2)
