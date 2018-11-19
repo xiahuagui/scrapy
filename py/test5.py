@@ -53,11 +53,9 @@ def main():
 	'''
 	cnts = cv2.findContours(edged, cv2.RETR_EXTERNAL,cv2.CHAIN_APPROX_SIMPLE)
 
-	print(len(cnts))
-	print(cnts[0])
-	print(cnts[1])
 
 	cnts = cnts[0] if imutils.is_cv2() else cnts[1]
+	cnts1 = cnts[1] if imutils.is_cv2() else cnts[2]
 
 	docCnt = None
 	# 确保至少有一个轮廓被找到
@@ -77,18 +75,43 @@ def main():
 		print("未找到答题卡轮廓，重新扫描\n")
 		return
 
-	print("aaaaaaaaaaaaaaa")
-	print(len(cnts))
-	print(docCnt)
-	print(len(docCnt))
-	return
+
+	docCnt1 = None
+	# 确保至少有一个轮廓被找到
+	if len(cnts1) > 0:
+	    # 将轮廓按大小降序排序
+	    cnts1 = sorted(cnts1, key=cv2.contourArea, reverse=True)
+	    # 对排序后的轮廓循环处理
+	    for c in cnts1:
+	        # 获取近似的轮廓
+	        peri = cv2.arcLength(c, True)
+	        approx = cv2.approxPolyDP(c, 0.02 * peri, True)
+	        # 如果近似轮廓有四个顶点，那么就认为找到了答题卡
+	        if len(approx) == 4:
+	            docCnt1 = approx
+	            break
+	elif len(cnts1)<=0:
+		print("未找到答题卡轮廓，重新扫描\n")
+		return
+
+	# print("aaaaaaaaaaaaaaa")
+	# print(len(cnts))
+	# print(docCnt)
+	# print(len(docCnt))
+	# return
 
 	newimage = image.copy()
 	for i in docCnt:
 	    #circle函数为在图像上作图，新建了一个图像用来演示四角选取
 		cv2.circle(newimage, (i[0][0],i[0][1]), 50, (255, 0, 0), -1)
 
+	for i in docCnt1:
+	    #circle函数为在图像上作图，新建了一个图像用来演示四角选取
+		cv2.circle(newimage, (i[0][0],i[0][1]), 50, (255, 0, 0), -1)
+
 	cv2.imwrite('/usr/www/scrapy/py/22.jpg', newimage)
+
+	return
 
 
 	paper = four_point_transform(image, docCnt.reshape(4, 2))
