@@ -2,57 +2,39 @@ import cv2
 import matplotlib.pyplot as plt
 import imutils
 from imutils.perspective import four_point_transform
-import numpy as np
-def get_init_process_img(roi_img):
-    """
-    对图片进行初始化处理，包括，梯度化，高斯模糊，二值化，腐蚀，膨胀和边缘检测
-    :param roi_img: ndarray
-    :return: ndarray
-    """
-    h = cv2.Sobel(roi_img, cv2.CV_32F, 0, 1, -1)
-    v = cv2.Sobel(roi_img, cv2.CV_32F, 1, 0, -1)
-    img = cv2.add(h, v)
-    img = cv2.convertScaleAbs(img)
-    img = cv2.GaussianBlur(img, (3, 3), 0)
-    ret, img = cv2.threshold(img, 120, 255, cv2.THRESH_BINARY)
-    kernel = np.ones((1, 1), np.uint8)
-    img = cv2.erode(img, kernel, iterations=1)
-    img = cv2.dilate(img, kernel, iterations=2)
-    img = cv2.erode(img, kernel, iterations=1)
-    img = cv2.dilate(img, kernel, iterations=2)
-    img = imutils.auto_canny(img)
-    return img
 
 def main():
 	#读入图片
 	image = cv2.imread("/usr/www/scrapy/py/xin.jpg")
 	#转换为灰度图像
 	gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-	# #高斯滤波
-	# blurred = cv2.GaussianBlur(gray, (3, 3), 0)
-	# #自适应二值化方法
-	# blurred = cv2.adaptiveThreshold(blurred,255,cv2.ADAPTIVE_THRESH_MEAN_C,cv2.THRESH_BINARY,51,2)
-	# '''
-	# adaptiveThreshold函数：第一个参数src指原图像，原图像应该是灰度图。
-	#     第二个参数x指当像素值高于（有时是小于）阈值时应该被赋予的新的像素值
-	#     第三个参数adaptive_method 指： CV_ADAPTIVE_THRESH_MEAN_C 或 CV_ADAPTIVE_THRESH_GAUSSIAN_C
-	#     第四个参数threshold_type  指取阈值类型：必须是下者之一  
-	#                                  •  CV_THRESH_BINARY,
-	#                         • CV_THRESH_BINARY_INV
-	#      第五个参数 block_size 指用来计算阈值的象素邻域大小: 3, 5, 7, ...
-	#     第六个参数param1    指与方法有关的参数。对方法CV_ADAPTIVE_THRESH_MEAN_C 和 CV_ADAPTIVE_THRESH_GAUSSIAN_C， 它是一个从均值或加权均值提取的常数, 尽管它可以是负数。
-	# '''
-	# #这一步可有可无，主要是增加一圈白框，以免刚好卷子边框压线后期边缘检测无果。好的样本图就不用考虑这种问题
-	# #blurred = cv2.copyMakeBorder(blurred,5,5,5,5,cv2.BORDER_CONSTANT,value=(255,255,255))
-	blurred = get_init_process_img(gray)
+
+
+	#高斯滤波
+	blurred = cv2.GaussianBlur(gray, (3, 3), 0)
+	#自适应二值化方法
+	blurred = cv2.adaptiveThreshold(blurred,255,cv2.ADAPTIVE_THRESH_MEAN_C,cv2.THRESH_BINARY,51,2)
+	'''
+	adaptiveThreshold函数：第一个参数src指原图像，原图像应该是灰度图。
+	    第二个参数x指当像素值高于（有时是小于）阈值时应该被赋予的新的像素值
+	    第三个参数adaptive_method 指： CV_ADAPTIVE_THRESH_MEAN_C 或 CV_ADAPTIVE_THRESH_GAUSSIAN_C
+	    第四个参数threshold_type  指取阈值类型：必须是下者之一  
+	                                 •  CV_THRESH_BINARY,
+	                        • CV_THRESH_BINARY_INV
+	     第五个参数 block_size 指用来计算阈值的象素邻域大小: 3, 5, 7, ...
+	    第六个参数param1    指与方法有关的参数。对方法CV_ADAPTIVE_THRESH_MEAN_C 和 CV_ADAPTIVE_THRESH_GAUSSIAN_C， 它是一个从均值或加权均值提取的常数, 尽管它可以是负数。
+	'''
+	#这一步可有可无，主要是增加一圈白框，以免刚好卷子边框压线后期边缘检测无果。好的样本图就不用考虑这种问题
+	#blurred = cv2.copyMakeBorder(blurred,5,5,5,5,cv2.BORDER_CONSTANT,value=(255,255,255))
+
 	cv2.imwrite('/usr/www/scrapy/py/11.jpg', blurred)
 
 
 
 	#canny边缘检测
-	# edged = cv2.Canny(blurred, 100, 200)
+	edged = cv2.Canny(blurred, 10, 100)
 
-	# cv2.imwrite('/usr/www/scrapy/py/11_1.jpg', edged)
+	cv2.imwrite('/usr/www/scrapy/py/11_1.jpg', edged)
 	# 从边缘图中寻找轮廓，然后初始化答题卡对应的轮廓
 	'''
 	findContours
@@ -65,7 +47,7 @@ def main():
 	     cv2.RETR_TREE 建立一个等级树结构的轮廓。
 	method --  轮廓的近似办法：
 	     cv2.CHAIN_APPROX_NONE 存储所有的轮廓点，相邻的两个点的像素位置差不超过1，即max （abs (x1 - x2), abs(y2 - y1) == 1
-	     cv2.CHAIN_APPROX_SIMPLE 压缩水平方向，垂直方向，对角线方向的元素，只保留该方向的终点坐标，例如一个矩形轮廓只需
+	     cv2.CHAIN_APPROX_SIMPLE压缩水平方向，垂直方向，对角线方向的元素，只保留该方向的终点坐标，例如一个矩形轮廓只需
 	                       4个点来保存轮廓信息
 	      cv2.CHAIN_APPROX_TC89_L1，CV_CHAIN_APPROX_TC89_KCOS使用teh-Chinl chain 近似算法
 	'''
@@ -122,8 +104,6 @@ def main():
 
 	cv2.imwrite('/usr/www/scrapy/py/55.jpg', thresh)
 	cv2.imwrite('/usr/www/scrapy/py/66.jpg', ChQImg)
-
-	
 	'''
 	    threshold参数说明
 	    第一个参数 src    指原图像，原图像应该是灰度图。
@@ -146,8 +126,7 @@ def main():
 	for c in cnts:
 	     # 计算轮廓的边界框，然后利用边界框数据计算宽高比
 	      (x, y, w, h) = cv2.boundingRect(c)
-	      #if (w > 60 & h > 20)and y>900 and y<2000:
-	      if w > 70 and h > 24 and y>1590 and y<2760:  #90 60
+	      if (w > 60 & h > 20)and y>900 and y<2000:
 	            M = cv2.moments(c)
 	            cX = int(M["m10"] / M["m00"])
 	            cY = int(M["m01"] / M["m00"])
@@ -162,6 +141,7 @@ def main():
 
 	cv2.imwrite('/usr/www/scrapy/py/77.jpg', paper)
 	        
+
 	print(Answer)
 	print(len(Answer))
 	return
@@ -199,7 +179,6 @@ def main():
 
 	print(result)
 	print(len(result))
-
 
 def judgey0(y):
     if (y / 5 < 1):
