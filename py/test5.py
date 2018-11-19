@@ -31,60 +31,63 @@ def main():
 
 
 
-	#canny边缘检测
-	edged = cv2.Canny(blurred, 10, 100)
+	# #canny边缘检测
+	# edged = cv2.Canny(blurred, 10, 100)
 
-	cv2.imwrite('/usr/www/scrapy/py/11_1.jpg', edged)
-	# 从边缘图中寻找轮廓，然后初始化答题卡对应的轮廓
-	'''
-	findContours
-	image -- 要查找轮廓的原图像
-	mode -- 轮廓的检索模式，它有四种模式：
-	     cv2.RETR_EXTERNAL  表示只检测外轮廓                                  
-	     cv2.RETR_LIST 检测的轮廓不建立等级关系
-	     cv2.RETR_CCOMP 建立两个等级的轮廓，上面的一层为外边界，里面的一层为内孔的边界信息。如果内孔内还有一个连通物体，
-	              这个物体的边界也在顶层。
-	     cv2.RETR_TREE 建立一个等级树结构的轮廓。
-	method --  轮廓的近似办法：
-	     cv2.CHAIN_APPROX_NONE 存储所有的轮廓点，相邻的两个点的像素位置差不超过1，即max （abs (x1 - x2), abs(y2 - y1) == 1
-	     cv2.CHAIN_APPROX_SIMPLE 压缩水平方向，垂直方向，对角线方向的元素，只保留该方向的终点坐标，例如一个矩形轮廓只需
-	                       4个点来保存轮廓信息
-	      cv2.CHAIN_APPROX_TC89_L1，CV_CHAIN_APPROX_TC89_KCOS使用teh-Chinl chain 近似算法
-	'''
-	cnts = cv2.findContours(edged, cv2.RETR_EXTERNAL,cv2.CHAIN_APPROX_SIMPLE)
-	cnts = cnts[0] if imutils.is_cv2() else cnts[1]
+	# cv2.imwrite('/usr/www/scrapy/py/11_1.jpg', edged)
+	# # 从边缘图中寻找轮廓，然后初始化答题卡对应的轮廓
+	# '''
+	# findContours
+	# image -- 要查找轮廓的原图像
+	# mode -- 轮廓的检索模式，它有四种模式：
+	#      cv2.RETR_EXTERNAL  表示只检测外轮廓                                  
+	#      cv2.RETR_LIST 检测的轮廓不建立等级关系
+	#      cv2.RETR_CCOMP 建立两个等级的轮廓，上面的一层为外边界，里面的一层为内孔的边界信息。如果内孔内还有一个连通物体，
+	#               这个物体的边界也在顶层。
+	#      cv2.RETR_TREE 建立一个等级树结构的轮廓。
+	# method --  轮廓的近似办法：
+	#      cv2.CHAIN_APPROX_NONE 存储所有的轮廓点，相邻的两个点的像素位置差不超过1，即max （abs (x1 - x2), abs(y2 - y1) == 1
+	#      cv2.CHAIN_APPROX_SIMPLE 压缩水平方向，垂直方向，对角线方向的元素，只保留该方向的终点坐标，例如一个矩形轮廓只需
+	#                        4个点来保存轮廓信息
+	#       cv2.CHAIN_APPROX_TC89_L1，CV_CHAIN_APPROX_TC89_KCOS使用teh-Chinl chain 近似算法
+	# '''
+	# cnts = cv2.findContours(edged, cv2.RETR_EXTERNAL,cv2.CHAIN_APPROX_SIMPLE)
+	# cnts = cnts[0] if imutils.is_cv2() else cnts[1]
 
-	docCnt = None
-	# 确保至少有一个轮廓被找到
-	if len(cnts) > 0:
-	    # 将轮廓按大小降序排序
-	    cnts = sorted(cnts, key=cv2.contourArea, reverse=True)
-	    # 对排序后的轮廓循环处理
-	    for c in cnts:
-	        # 获取近似的轮廓
-	        peri = cv2.arcLength(c, True)
-	        approx = cv2.approxPolyDP(c, 0.02 * peri, True)
-	        # 如果近似轮廓有四个顶点，那么就认为找到了答题卡
-	        if len(approx) == 4:
-	            docCnt = approx
-	            break
-	elif len(cnts)<=0:
-		print("未找到答题卡轮廓，重新扫描\n")
-		return
+	# docCnt = None
+	# # 确保至少有一个轮廓被找到
+	# if len(cnts) > 0:
+	#     # 将轮廓按大小降序排序
+	#     cnts = sorted(cnts, key=cv2.contourArea, reverse=True)
+	#     # 对排序后的轮廓循环处理
+	#     for c in cnts:
+	#         # 获取近似的轮廓
+	#         peri = cv2.arcLength(c, True)
+	#         approx = cv2.approxPolyDP(c, 0.02 * peri, True)
+	#         # 如果近似轮廓有四个顶点，那么就认为找到了答题卡
+	#         if len(approx) == 4:
+	#             docCnt = approx
+	#             break
+	# elif len(cnts)<=0:
+	# 	print("未找到答题卡轮廓，重新扫描\n")
+	# 	return
 
-	newimage = image.copy()
-	for i in docCnt:
-	    #circle函数为在图像上作图，新建了一个图像用来演示四角选取
-		cv2.circle(newimage, (i[0][0],i[0][1]), 50, (255, 0, 0), -1)
+	# newimage = image.copy()
+	# for i in docCnt:
+	#     #circle函数为在图像上作图，新建了一个图像用来演示四角选取
+	# 	cv2.circle(newimage, (i[0][0],i[0][1]), 50, (255, 0, 0), -1)
 
-	cv2.imwrite('/usr/www/scrapy/py/22.jpg', newimage)
+	# cv2.imwrite('/usr/www/scrapy/py/22.jpg', newimage)
 
 
-	paper = four_point_transform(image, docCnt.reshape(4, 2))
-	warped = four_point_transform(gray, docCnt.reshape(4, 2))
+	# paper = four_point_transform(image, docCnt.reshape(4, 2))
+	# warped = four_point_transform(gray, docCnt.reshape(4, 2))
+	# 
+	# paper = four_point_transform(image, docCnt.reshape(4, 2))
+	# warped = four_point_transform(gray, docCnt.reshape(4, 2))
+	paper = image
+	warped = gray
 
-	cv2.imwrite('/usr/www/scrapy/py/33.jpg', paper)
-	cv2.imwrite('/usr/www/scrapy/py/44.jpg', warped)
 
 
 	# 对灰度图应用二值化算法
