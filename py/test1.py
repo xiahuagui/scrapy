@@ -25,11 +25,9 @@ def get_init_process_img(roi_img):
 
 def main():
 	#读入图片
-	image = cv2.imread("/usr/www/scrapy/py/test1.jpg")
+	image = cv2.imread("/usr/www/scrapy/py/xin.jpg")
 	#转换为灰度图像
 	gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-
-
 	# #高斯滤波
 	# blurred = cv2.GaussianBlur(gray, (3, 3), 0)
 	# #自适应二值化方法
@@ -46,7 +44,6 @@ def main():
 	# '''
 	# #这一步可有可无，主要是增加一圈白框，以免刚好卷子边框压线后期边缘检测无果。好的样本图就不用考虑这种问题
 	# #blurred = cv2.copyMakeBorder(blurred,5,5,5,5,cv2.BORDER_CONSTANT,value=(255,255,255))
-
 	blurred = get_init_process_img(gray)
 	cv2.imwrite('/usr/www/scrapy/py/11.jpg', blurred)
 
@@ -125,6 +122,8 @@ def main():
 
 	cv2.imwrite('/usr/www/scrapy/py/55.jpg', thresh)
 	cv2.imwrite('/usr/www/scrapy/py/66.jpg', ChQImg)
+
+	return
 	'''
 	    threshold参数说明
 	    第一个参数 src    指原图像，原图像应该是灰度图。
