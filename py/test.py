@@ -9,7 +9,6 @@ def main():
 	#转换为灰度图像
 	gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
-	cv2.imwrite('/usr/www/scrapy/py/11.jpg', gray)
 
 	#高斯滤波
 	blurred = cv2.GaussianBlur(gray, (3, 3), 0)
@@ -28,7 +27,7 @@ def main():
 	#这一步可有可无，主要是增加一圈白框，以免刚好卷子边框压线后期边缘检测无果。好的样本图就不用考虑这种问题
 	blurred = cv2.copyMakeBorder(blurred,5,5,5,5,cv2.BORDER_CONSTANT,value=(255,255,255))
 
-	cv2.imwrite('/usr/www/scrapy/py/22.jpg', blurred)
+	cv2.imwrite('/usr/www/scrapy/py/11.jpg', blurred)
 
 
 
@@ -67,19 +66,16 @@ def main():
 	        if len(approx) == 4:
 	            docCnt = approx
 	            break
-
-
-
-	print(cnts)
-	print(len(cnts))
-	print(docCnt)
-
-	return
+	else if len(cnts)<=0:
+		print("未找到答题卡轮廓，重新扫描\n")
+		return
 
 	newimage = image.copy()
 	for i in docCnt:
 	    #circle函数为在图像上作图，新建了一个图像用来演示四角选取
 		cv2.circle(newimage, (i[0][0],i[0][1]), 50, (255, 0, 0), -1)
+
+	cv2.imwrite('/usr/www/scrapy/py/22.jpg', newimage)
 
 
 	paper = four_point_transform(image, docCnt.reshape(4, 2))
