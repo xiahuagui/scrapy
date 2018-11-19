@@ -179,7 +179,7 @@ def main():
 	                    judge0(j,k)
 	                    IDAnswer.append(judge0(j,k))
 	#对答案部分重新排序，以最好的方式输出
-	IDAnswer.sort()
+	IDAnswer.sort() 
 	print(IDAnswer)
 	print(len(IDAnswer))
 
