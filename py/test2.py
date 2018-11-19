@@ -4,128 +4,34 @@ import imutils
 from imutils.perspective import four_point_transform
 import numpy as np
 def get_init_process_img(roi_img):
-	"""
-	对图片进行初始化处理，包括，梯度化，高斯模糊，二值化，腐蚀，膨胀和边缘检测
-	:param roi_img: ndarray
-	:return: ndarray
-	"""
-	h = cv2.Sobel(roi_img, cv2.CV_32F, 0, 1, -1)
-	v = cv2.Sobel(roi_img, cv2.CV_32F, 1, 0, -1)
-	img = cv2.add(h, v)
-	img = cv2.convertScaleAbs(img)
-	img = cv2.GaussianBlur(img, (3, 3), 0)
-	ret, img = cv2.threshold(img, 120, 255, cv2.THRESH_BINARY)
-	kernel = np.ones((1, 1), np.uint8)
-	img = cv2.erode(img, kernel, iterations=1)
-	img = cv2.dilate(img, kernel, iterations=2)
-	img = cv2.erode(img, kernel, iterations=1)
-	img = cv2.dilate(img, kernel, iterations=2)
-	img = imutils.auto_canny(img)
-	return img
-
-def get_max_area_cnt(img):
-	"""
-	获得图片里面最大面积的轮廓
-	:param img: ndarray
-	:return: ndarray
-	"""
-	cnts, hierarchy = cv2.findContours(img, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
-	cnt = max(cnts, key=lambda c: cv2.contourArea(c))
-	return cnt
-
-def detect_cnt_again(poly, base_img):
-	"""
-	继续检测已截取区域是否涵盖了答题卡区域
-	:param poly: ndarray
-	:param base_img: ndarray
-	:return: ndarray
-	"""
-	# 该多边形区域是否还包含答题卡区域的flag
-	flag = False
-
-	# 计算多边形四个顶点，并且截图，然后处理截取后的图片
-	top_left, bottom_left, top_right, bottom_right = get_corner_node_list(poly)
-	roi_img = get_roi_img(base_img, bottom_left, bottom_right, top_left, top_right)
-	img = get_init_process_img(roi_img)
-
-	# 获得面积最大的轮廓
-	cnt = get_max_area_cnt(img)
-
-	# 如果轮廓面积足够大，重新计算多边形四个顶点
-	if cv2.contourArea(cnt) > roi_img.shape[0] * roi_img.shape[1] * SHEET_AREA_MIN_RATIO:
-		flag = True
-	poly = cv2.approxPolyDP(cnt, cv2.arcLength((cnt,), True) * 0.1, True)
-	top_left, bottom_left, top_right, bottom_right = get_corner_node_list(poly)
-	if not poly.shape[0] == 4:
-		print("多边形顶点个数错误")
-		return
-
-	# 多边形顶点和图片顶点，主要用于纠偏
-	base_poly_nodes = np.float32([top_left[0], bottom_left[0], top_right[0], bottom_right[0]])
-	base_nodes = np.float32([[0, 0],
-							[base_img.shape[1], 0],
-							[0, base_img.shape[0]],
-							[base_img.shape[1], base_img.shape[0]]])
-	transmtx = cv2.getPerspectiveTransform(base_poly_nodes, base_nodes)
-
-	if flag:
-		img_warp = cv2.warpPerspective(roi_img, transmtx, (base_img.shape[1], base_img.shape[0]))
-	else:
-		img_warp = cv2.warpPerspective(base_img, transmtx, (base_img.shape[1], base_img.shape[0]))
-	return img_warp
+    """
+    对图片进行初始化处理，包括，梯度化，高斯模糊，二值化，腐蚀，膨胀和边缘检测
+    :param roi_img: ndarray
+    :return: ndarray
+    """
+    h = cv2.Sobel(roi_img, cv2.CV_32F, 0, 1, -1)
+    v = cv2.Sobel(roi_img, cv2.CV_32F, 1, 0, -1)
+    img = cv2.add(h, v)
+    img = cv2.convertScaleAbs(img)
+    img = cv2.GaussianBlur(img, (3, 3), 0)
+    ret, img = cv2.threshold(img, 120, 255, cv2.THRESH_BINARY)
+    kernel = np.ones((1, 1), np.uint8)
+    img = cv2.erode(img, kernel, iterations=1)
+    img = cv2.dilate(img, kernel, iterations=2)
+    img = cv2.erode(img, kernel, iterations=1)
+    img = cv2.dilate(img, kernel, iterations=2)
+    img = imutils.auto_canny(img)
+    return img
 
 def main():
 	#读入图片
-	image = cv2.imread("/usr/www/scrapy/py/test1.jpg")
+	image = cv2.imread("/usr/www/scrapy/py/test.jpg")
 	#转换为灰度图像
 	gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
 
-	# #高斯滤波
-	# blurred = cv2.GaussianBlur(gray, (3, 3), 0)
-	# #自适应二值化方法
-	# blurred = cv2.adaptiveThreshold(blurred,255,cv2.ADAPTIVE_THRESH_MEAN_C,cv2.THRESH_BINARY,51,2)
-	# '''
-	# adaptiveThreshold函数：第一个参数src指原图像，原图像应该是灰度图。
-	#     第二个参数x指当像素值高于（有时是小于）阈值时应该被赋予的新的像素值
-	#     第三个参数adaptive_method 指： CV_ADAPTIVE_THRESH_MEAN_C 或 CV_ADAPTIVE_THRESH_GAUSSIAN_C
-	#     第四个参数threshold_type  指取阈值类型：必须是下者之一  
-	#                                  •  CV_THRESH_BINARY,
-	#                         • CV_THRESH_BINARY_INV
-	#      第五个参数 block_size 指用来计算阈值的象素邻域大小: 3, 5, 7, ...
-	#     第六个参数param1    指与方法有关的参数。对方法CV_ADAPTIVE_THRESH_MEAN_C 和 CV_ADAPTIVE_THRESH_GAUSSIAN_C， 它是一个从均值或加权均值提取的常数, 尽管它可以是负数。
-	# '''
-	# #这一步可有可无，主要是增加一圈白框，以免刚好卷子边框压线后期边缘检测无果。好的样本图就不用考虑这种问题
-	# #blurred = cv2.copyMakeBorder(blurred,5,5,5,5,cv2.BORDER_CONSTANT,value=(255,255,255))
-
 	blurred = get_init_process_img(gray)
 	cv2.imwrite('/usr/www/scrapy/py/11.jpg', blurred)
-
-	# 获取最大面积轮廓并和图片大小作比较，看轮廓周长大小判断是否是答题卡的轮廓
-	cnt = get_max_area_cnt(blurred)
-
-	cv2.imwrite('/usr/www/scrapy/py/22.jpg', cnt) 
-
-	cnt_perimeter = cv2.arcLength(cnt, True)
-	base_img_perimeter = (image.shape[0] + image.shape[1]) * 2
-	print("周长：", base_img_perimeter)
-	print("轮廓：", cnt_perimeter)
-
-    # if not cnt_perimeter > 0.35 * base_img_perimeter:
-    #     raise ContourPerimeterSizeError
-
-    # 计算多边形的顶点，并看是否是四个顶点
-	poly_node_list = cv2.approxPolyDP(cnt, cv2.arcLength(cnt, True) * 0.1, True)
-	print(poly_node_list.shape[0])
-	if not poly_node_list.shape[0] == 4:
-		print("多边形顶点个数错误\n")
-		return
-
-    # 根据计算的多边形顶点继续处理图片，主要是是纠偏
-	processed_img = detect_cnt_again(poly_node_list, image)
-	cv2.imwrite('/usr/www/scrapy/py/33.jpg', processed_img)
-
-	return
 
 
 	#canny边缘检测
