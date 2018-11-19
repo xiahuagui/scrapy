@@ -51,7 +51,7 @@ def main():
 	                       4个点来保存轮廓信息
 	      cv2.CHAIN_APPROX_TC89_L1，CV_CHAIN_APPROX_TC89_KCOS使用teh-Chinl chain 近似算法
 	'''
-	cnts = cv2.findContours(edged, cv2.RETR_TREE,cv2.CHAIN_APPROX_SIMPLE)
+	cnts = cv2.findContours(edged, cv2.RETR_CCOMP,cv2.CHAIN_APPROX_SIMPLE)
 	cnts = cnts[0] if imutils.is_cv2() else cnts[1]
 
 	docCnt = None
