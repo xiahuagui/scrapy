@@ -91,7 +91,7 @@ def main():
 	#重塑可能用到的图像
 	thresh = cv2.resize(thresh, (width1, height1), cv2.INTER_LANCZOS4)
 	paper = cv2.resize(paper, (width1, height1), cv2.INTER_LANCZOS4)
-	#warped = cv2.resize(warped, (width1, height1), cv2.INTER_LANCZOS4)
+	warped = cv2.resize(warped, (width1, height1), cv2.INTER_LANCZOS4)
 	#均值滤波
 	ChQImg = cv2.blur(thresh, (23, 23))
 	#二进制二值化
