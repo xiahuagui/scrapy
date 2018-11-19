@@ -55,13 +55,11 @@ def main():
 
 
 	cnts = cnts[0] if imutils.is_cv2() else cnts[1]
-	cnts1 = cnts[1] if imutils.is_cv2() else cnts[2]
+	# cnts1 = cnts[1] if imutils.is_cv2() else cnts[2]
 
-	print(len(cnts))
-	print(len(cnts1))
-	return
 
 	docCnt = None
+	ss = 0
 	# 确保至少有一个轮廓被找到
 	if len(cnts) > 0:
 	    # 将轮廓按大小降序排序
@@ -72,7 +70,8 @@ def main():
 	        peri = cv2.arcLength(c, True)
 	        approx = cv2.approxPolyDP(c, 0.02 * peri, True)
 	        # 如果近似轮廓有四个顶点，那么就认为找到了答题卡
-	        if len(approx) == 4:
+	        if len(approx) == 4 and ss <= 1:
+	        	ss = ss + 1
 	            docCnt = approx
 	            break
 	elif len(cnts)<=0:
@@ -80,23 +79,23 @@ def main():
 		return
 
 
-	docCnt1 = None
-	# 确保至少有一个轮廓被找到
-	if len(cnts1) > 0:
-	    # 将轮廓按大小降序排序
-	    cnts1 = sorted(cnts1, key=cv2.contourArea, reverse=True)
-	    # 对排序后的轮廓循环处理
-	    for c in cnts1:
-	        # 获取近似的轮廓
-	        peri = cv2.arcLength(c, True)
-	        approx = cv2.approxPolyDP(c, 0.02 * peri, True)
-	        # 如果近似轮廓有四个顶点，那么就认为找到了答题卡
-	        if len(approx) == 4:
-	            docCnt1 = approx
-	            break
-	elif len(cnts1)<=0:
-		print("未找到答题卡轮廓，重新扫描\n")
-		return
+	# docCnt1 = None
+	# # 确保至少有一个轮廓被找到
+	# if len(cnts1) > 0:
+	#     # 将轮廓按大小降序排序
+	#     cnts1 = sorted(cnts1, key=cv2.contourArea, reverse=True)
+	#     # 对排序后的轮廓循环处理
+	#     for c in cnts1:
+	#         # 获取近似的轮廓
+	#         peri = cv2.arcLength(c, True)
+	#         approx = cv2.approxPolyDP(c, 0.02 * peri, True)
+	#         # 如果近似轮廓有四个顶点，那么就认为找到了答题卡
+	#         if len(approx) == 4:
+	#             docCnt1 = approx
+	#             break
+	# elif len(cnts1)<=0:
+	# 	print("未找到答题卡轮廓，重新扫描\n")
+	# 	return
 
 	# print("aaaaaaaaaaaaaaa")
 	# print(len(cnts))
@@ -109,9 +108,9 @@ def main():
 	    #circle函数为在图像上作图，新建了一个图像用来演示四角选取
 		cv2.circle(newimage, (i[0][0],i[0][1]), 50, (255, 0, 0), -1)
 
-	for i in docCnt1:
-	    #circle函数为在图像上作图，新建了一个图像用来演示四角选取
-		cv2.circle(newimage, (i[0][0],i[0][1]), 50, (255, 0, 0), -1)
+	# for i in docCnt1:
+	#     #circle函数为在图像上作图，新建了一个图像用来演示四角选取
+	# 	cv2.circle(newimage, (i[0][0],i[0][1]), 50, (255, 0, 0), -1)
 
 	cv2.imwrite('/usr/www/scrapy/py/22.jpg', newimage)
 
