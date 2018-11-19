@@ -104,7 +104,7 @@ def main():
 	# 获取最大面积轮廓并和图片大小作比较，看轮廓周长大小判断是否是答题卡的轮廓
 	cnt = get_max_area_cnt(blurred)
 
-	cv2.imwrite('/usr/www/scrapy/py/22.jpg', cnt)
+	cv2.imwrite('/usr/www/scrapy/py/22.jpg', cnt) 
 
 	cnt_perimeter = cv2.arcLength(cnt, True)
 	base_img_perimeter = (image.shape[0] + image.shape[1]) * 2
