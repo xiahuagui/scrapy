@@ -162,8 +162,10 @@ def main():
 
 	cv2.imwrite('/usr/www/scrapy/py/77.jpg', paper)
 	        
-
-	#return
+	print(Answer)
+	print(len(Answer))
+	return
+	
 	xt1 = [69, 132, 255, 378, 501, 651, 723, 846, 969, 1092, 1233, 1314, 1437, 1560, 1680, 1824, 1905, 2028, 2154, 2280, 2370]  #选项左侧x坐标
 	yt1 = [948, 1017, 1089, 1155, 1227, 1317, 1383, 1455, 1524, 1593, 1683, 1752, 1821, 1893, 1962, 2001]                       #选项上测y坐标
 
@@ -176,7 +178,7 @@ def main():
 	                    judge0(j,k)
 	                    IDAnswer.append(judge0(j,k))
 	#对答案部分重新排序，以最好的方式输出
-	IDAnswer.sort()
+	# IDAnswer.sort()
 	print(IDAnswer)
 	print(len(IDAnswer))
 
