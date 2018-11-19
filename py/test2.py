@@ -102,27 +102,27 @@ def main():
 	cv2.imwrite('/usr/www/scrapy/py/11.jpg', blurred)
 
 	# 获取最大面积轮廓并和图片大小作比较，看轮廓周长大小判断是否是答题卡的轮廓
-    cnt = get_max_area_cnt(blurred)
+	cnt = get_max_area_cnt(blurred)
 
-    cv2.imwrite('/usr/www/scrapy/py/22.jpg', cnt)
+	cv2.imwrite('/usr/www/scrapy/py/22.jpg', cnt)
 
-    cnt_perimeter = cv2.arcLength(cnt, True)
-    base_img_perimeter = (image.shape[0] + image.shape[1]) * 2
-    print("周长：", base_img_perimeter)
-    print("轮廓：", cnt_perimeter)
+	cnt_perimeter = cv2.arcLength(cnt, True)
+	base_img_perimeter = (image.shape[0] + image.shape[1]) * 2
+	print("周长：", base_img_perimeter)
+	print("轮廓：", cnt_perimeter)
 
     # if not cnt_perimeter > 0.35 * base_img_perimeter:
     #     raise ContourPerimeterSizeError
 
     # 计算多边形的顶点，并看是否是四个顶点
-    poly_node_list = cv2.approxPolyDP(cnt, cv2.arcLength(cnt, True) * 0.1, True)
-    if not poly_node_list.shape[0] == 4:
-        print("多边形顶点个数错误")
+	poly_node_list = cv2.approxPolyDP(cnt, cv2.arcLength(cnt, True) * 0.1, True)
+	if not poly_node_list.shape[0] == 4:
+       	print("多边形顶点个数错误")
         return
 
     # 根据计算的多边形顶点继续处理图片，主要是是纠偏
-    processed_img = detect_cnt_again(poly_node_list, image)
-    cv2.imwrite('/usr/www/scrapy/py/33.jpg', processed_img)
+	processed_img = detect_cnt_again(poly_node_list, image)
+	cv2.imwrite('/usr/www/scrapy/py/33.jpg', processed_img)
 
 
     return
