@@ -5,7 +5,7 @@ from imutils.perspective import four_point_transform
 
 def main():
 	#读入图片
-	image = cv2.imread("/usr/www/scrapy/py/test.jpg")
+	image = cv2.imread("/usr/www/scrapy/py/ys.jpg")
 	#转换为灰度图像
 	gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
@@ -97,8 +97,8 @@ def main():
 	#二进制二值化
 	ChQImg = cv2.threshold(ChQImg, 100, 225, cv2.THRESH_BINARY)[1]
 
-	cv2.imwrite('/usr/www/scrapy/py/55.jpg', thresh)
-	cv2.imwrite('/usr/www/scrapy/py/66.jpg', ChQImg)
+	# cv2.imwrite('/usr/www/scrapy/py/55.jpg', thresh)
+	# cv2.imwrite('/usr/www/scrapy/py/66.jpg', ChQImg)
 	'''
 	    threshold参数说明
 	    第一个参数 src    指原图像，原图像应该是灰度图。
@@ -118,13 +118,9 @@ def main():
 	cnts = cnts[0] if imutils.is_cv2() else cnts[1]
 	Answer = []
 
-	i = 0
 	for c in cnts:
 	     # 计算轮廓的边界框，然后利用边界框数据计算宽高比
 	      (x, y, w, h) = cv2.boundingRect(c)
-	      if y>900 and y<2000:
-	      	    i = i+1
-
 	      if (w > 60 & h > 20)and y>900 and y<2000:
 	            M = cv2.moments(c)
 	            cX = int(M["m10"] / M["m00"])
@@ -135,17 +131,15 @@ def main():
 	            cv2.drawContours(paper, c, -1, (0, 0, 255), 5, lineType=0)
 	            cv2.circle(paper, (cX, cY), 7, (255, 255, 255), -1)
 
-	            cv2.imwrite('/usr/www/scrapy/py/77.jpg', paper)
+	            # cv2.imwrite('/usr/www/scrapy/py/77.jpg', paper)
 
 	            #保存选中模块的中心坐标
 	            Answer.append((cX, cY))
 
 
-	print(i)	        
-	print(Answer)
-	print(len(Answer))
-	return
+	        
 
+	#return
 	xt1 = [69, 132, 255, 378, 501, 651, 723, 846, 969, 1092, 1233, 1314, 1437, 1560, 1680, 1824, 1905, 2028, 2154, 2280, 2370]
 	yt1 = [948, 1017, 1089, 1155, 1227, 1317, 1383, 1455, 1524, 1593, 1683, 1752, 1821, 1893, 1962, 2001]
 
