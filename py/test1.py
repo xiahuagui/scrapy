@@ -2,6 +2,7 @@ import cv2
 import matplotlib.pyplot as plt
 import imutils
 from imutils.perspective import four_point_transform
+import numpy as np
 def get_init_process_img(roi_img):
     """
     对图片进行初始化处理，包括，梯度化，高斯模糊，二值化，腐蚀，膨胀和边缘检测
