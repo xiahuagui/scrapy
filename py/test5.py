@@ -59,6 +59,7 @@ def main():
 
 
 	docCnt = None
+	docCnt1 = None
 	ss = 0
 	# 确保至少有一个轮廓被找到
 	if len(cnts) > 0:
@@ -72,7 +73,11 @@ def main():
 	        # 如果近似轮廓有四个顶点，那么就认为找到了答题卡
 	        if len(approx) == 4 and ss <= 1:
 	            ss = ss + 1
-	            docCnt = approx
+	            if ss == 1:
+	                docCnt = approx
+	            else:
+	                docCnt1 = approx
+
 	            #break
 	        elif ss > 1:
 	            break
@@ -110,9 +115,9 @@ def main():
 	    #circle函数为在图像上作图，新建了一个图像用来演示四角选取
 		cv2.circle(newimage, (i[0][0],i[0][1]), 50, (255, 0, 0), -1)
 
-	# for i in docCnt1:
-	#     #circle函数为在图像上作图，新建了一个图像用来演示四角选取
-	# 	cv2.circle(newimage, (i[0][0],i[0][1]), 50, (255, 0, 0), -1)
+	for i in docCnt1:
+	    #circle函数为在图像上作图，新建了一个图像用来演示四角选取
+		cv2.circle(newimage, (i[0][0],i[0][1]), 50, (255, 0, 0), -1)
 
 	cv2.imwrite('/usr/www/scrapy/py/22.jpg', newimage)
 
