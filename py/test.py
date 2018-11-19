@@ -118,10 +118,12 @@ def main():
 	cnts = cnts[0] if imutils.is_cv2() else cnts[1]
 	Answer = []
 
+	i = 0
 	for c in cnts:
 	     # 计算轮廓的边界框，然后利用边界框数据计算宽高比
 	      (x, y, w, h) = cv2.boundingRect(c)
-
+	      if y>900 and y<2000:
+	      	    i = i+1
 
 	      if (w > 60 & h > 20)and y>900 and y<2000:
 	            M = cv2.moments(c)
@@ -139,7 +141,7 @@ def main():
 	            Answer.append((cX, cY))
 
 
-	        
+	print(i)	        
 	print(Answer)
 	print(len(Answer))
 	return
