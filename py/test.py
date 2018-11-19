@@ -97,6 +97,8 @@ def main():
 	#二进制二值化
 	ChQImg = cv2.threshold(ChQImg, 100, 225, cv2.THRESH_BINARY)[1]
 
+	cv2.imwrite('/usr/www/scrapy/py/55.jpg', thresh)
+	cv2.imwrite('/usr/www/scrapy/py/66.jpg', ChQImg)
 	'''
 	    threshold参数说明
 	    第一个参数 src    指原图像，原图像应该是灰度图。
