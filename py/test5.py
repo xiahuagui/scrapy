@@ -53,7 +53,9 @@ def main():
 	'''
 	cnts = cv2.findContours(edged, cv2.RETR_EXTERNAL,cv2.CHAIN_APPROX_SIMPLE)
 
-	print(cnts)
+	print(len(cnts))
+	print(cnts[0])
+	print(cnts[1])
 
 	cnts = cnts[0] if imutils.is_cv2() else cnts[1]
 
@@ -75,7 +77,10 @@ def main():
 		print("未找到答题卡轮廓，重新扫描\n")
 		return
 
+	print("aaaaaaaaaaaaaaa")
+	print(len(cnts))
 	print(docCnt)
+	print(len(docCnt))
 	return
 
 	newimage = image.copy()
