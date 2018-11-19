@@ -123,7 +123,7 @@ def main():
 	cv2.imwrite('/usr/www/scrapy/py/55.jpg', thresh)
 	cv2.imwrite('/usr/www/scrapy/py/66.jpg', ChQImg)
 
-	return
+	
 	'''
 	    threshold参数说明
 	    第一个参数 src    指原图像，原图像应该是灰度图。
@@ -147,7 +147,7 @@ def main():
 	     # 计算轮廓的边界框，然后利用边界框数据计算宽高比
 	      (x, y, w, h) = cv2.boundingRect(c)
 	      #if (w > 60 & h > 20)and y>900 and y<2000:
-	      if w > 60 and h > 20 and y>900 and y<2000:
+	      if w > 70 and h > 24 and y>1590 and y<2760:  #90 60
 	            M = cv2.moments(c)
 	            cX = int(M["m10"] / M["m00"])
 	            cY = int(M["m01"] / M["m00"])
@@ -164,7 +164,7 @@ def main():
 	        
 	print(Answer)
 	print(len(Answer))
-	#return
+	return
 
 	xt1 = [69, 132, 255, 378, 501, 651, 723, 846, 969, 1092, 1233, 1314, 1437, 1560, 1680, 1824, 1905, 2028, 2154, 2280, 2370]  #选项左侧x坐标 21
 	yt1 = [948, 1017, 1089, 1155, 1227, 1317, 1383, 1455, 1524, 1593, 1683, 1752, 1821, 1893, 1962, 2001]                       #选项上测y坐标 16
