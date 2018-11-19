@@ -193,6 +193,7 @@ def main():
 	print(IDAnswer)
 	print(len(IDAnswer))
 
+	IDAnswer1.sort() 
 	print(IDAnswer1)
 	print(len(IDAnswer1))
 
