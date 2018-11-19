@@ -20,7 +20,7 @@ def get_init_process_img(roi_img):
     img = cv2.dilate(img, kernel, iterations=2)
     img = cv2.erode(img, kernel, iterations=1)
     img = cv2.dilate(img, kernel, iterations=2)
-    img = auto_canny(img)
+    img = imutils.auto_canny(img)
     return img
 
 def main():
