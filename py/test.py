@@ -68,9 +68,13 @@ def main():
 	            docCnt = approx
 	            break
 
+
+
 	print(cnts)
 	print(len(cnts))
 	print(docCnt)
+
+	return
 
 	newimage = image.copy()
 	for i in docCnt:
