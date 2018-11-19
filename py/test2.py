@@ -116,9 +116,10 @@ def main():
 
     # 计算多边形的顶点，并看是否是四个顶点
 	poly_node_list = cv2.approxPolyDP(cnt, cv2.arcLength(cnt, True) * 0.1, True)
+	print(poly_node_list.shape[0])
 	if not poly_node_list.shape[0] == 4:
-    	print("多边形顶点个数错误")
-    	return
+		print("多边形顶点个数错误\n")
+		return
 
     # 根据计算的多边形顶点继续处理图片，主要是是纠偏
 	processed_img = detect_cnt_again(poly_node_list, image)
