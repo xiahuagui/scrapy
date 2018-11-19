@@ -71,7 +71,7 @@ def main():
 	        approx = cv2.approxPolyDP(c, 0.02 * peri, True)
 	        # 如果近似轮廓有四个顶点，那么就认为找到了答题卡
 	        if len(approx) == 4 and ss <= 1:
-	        	ss = ss + 1
+	            ss = ss + 1
 	            docCnt = approx
 	            break
 	elif len(cnts)<=0:
