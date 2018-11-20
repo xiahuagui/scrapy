@@ -3,6 +3,7 @@ import json
 import matplotlib.pyplot as plt
 import imutils
 from imutils.perspective import four_point_transform
+import json
 
 def main(path):
 	image = cv2.imread(path)
@@ -30,7 +31,7 @@ def main(path):
 	        elif ss > 1:
 	            break
 	elif len(cnts)<=0:
-		print("答题卡不符合规范，清重新扫描\n")
+		#print("答题卡不符合规范，清重新扫描\n")
 		return {"status":0, "msg":"答题卡不符合规范，清重新扫描\n"}
 
 
@@ -137,7 +138,7 @@ def check_choice_question(image,gray,docCnt):
 	                if i[1]>yt1[k] and i[1]<yt1[k+1]:
 	                    rs = judge0(j,k)
 	                    if rs[1] == "":
-	                    	print("存在题号太宽的情况，即为无效值\n")
+	                    	#print("存在题号太宽的情况，即为无效值\n")
 	                    	continue
 	                    if rs[0] in IDAnswer:
 	                    	IDAnswer[rs[0]].append(rs[1])
