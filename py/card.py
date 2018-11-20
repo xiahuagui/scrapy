@@ -2,6 +2,7 @@ import cv2
 import matplotlib.pyplot as plt
 import imutils
 from imutils.perspective import four_point_transform
+import json
 
 def main():
 	image = cv2.imread("/usr/www/scrapy/py/xin.jpg")
@@ -29,8 +30,8 @@ def main():
 	        elif ss > 1:
 	            break
 	elif len(cnts)<=0:
-		print("答题卡不符合规范，清重新扫描\n")
-		return {"status":0, "msg":"答题卡不符合规范，清重新扫描\n"}
+		#print("答题卡不符合规范，清重新扫描\n")
+		return json.dumps({"status":0, "msg":"答题卡不符合规范，清重新扫描\n"})
 
 
 
@@ -45,7 +46,7 @@ def main():
 	rs = {}
 	rs['admin'] = check_admission_ticket(image,gray,docCnt1)
 	rs['data'] = check_choice_question(image,gray,docCnt)  #答题区域
-	print({"status":1, "data":rs})
+	return json.dumps({"status":1, "data":rs})
 
 def check_admission_ticket(image,gray,docCnt):
 	paper = four_point_transform(image, docCnt.reshape(4, 2))
@@ -135,7 +136,7 @@ def check_choice_question(image,gray,docCnt):
 	                if i[1]>yt1[k] and i[1]<yt1[k+1]:
 	                    rs = judge0(j,k)
 	                    if rs[1] == "":
-	                    	print("存在题号太宽的情况，即为无效值\n")
+	                    	#print("存在题号太宽的情况，即为无效值\n")
 	                    	continue
 	                    if rs[0] in IDAnswer:
 	                    	IDAnswer[rs[0]].append(rs[1])
