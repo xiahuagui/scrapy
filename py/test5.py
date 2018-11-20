@@ -26,15 +26,11 @@ def main():
 	'''
 	#这一步可有可无，主要是增加一圈白框，以免刚好卷子边框压线后期边缘检测无果。好的样本图就不用考虑这种问题
 	blurred = cv2.copyMakeBorder(blurred,5,5,5,5,cv2.BORDER_CONSTANT,value=(255,255,255))
-
-	cv2.imwrite('./11.jpg', blurred)
-
-
-
+	#cv2.imwrite('./11.jpg', blurred)
 	#canny边缘检测
 	edged = cv2.Canny(blurred, 10, 100)
 
-	cv2.imwrite('./11_1.jpg', edged)
+	#cv2.imwrite('./11_1.jpg', edged)
 	# 从边缘图中寻找轮廓，然后初始化答题卡对应的轮廓
 	'''
 	findContours
@@ -52,8 +48,6 @@ def main():
 	      cv2.CHAIN_APPROX_TC89_L1，CV_CHAIN_APPROX_TC89_KCOS使用teh-Chinl chain 近似算法
 	'''
 	cnts = cv2.findContours(edged, cv2.RETR_EXTERNAL,cv2.CHAIN_APPROX_SIMPLE)
-
-
 	cnts = cnts[0] if imutils.is_cv2() else cnts[1]
 
 
@@ -93,9 +87,11 @@ def main():
 	    #circle函数为在图像上作图，新建了一个图像用来演示四角选取
 		cv2.circle(newimage, (i[0][0],i[0][1]), 50, (255, 0, 0), -1)
 
-	cv2.imwrite('./22.jpg', newimage)
-	check_choice_question(image,gray,docCnt)  #答题区域
-	check_admission_ticket(image,gray,docCnt1)
+	#cv2.imwrite('./22.jpg', newimage)
+	rs = {}
+	rs['admin'] = check_admission_ticket(image,gray,docCnt1)
+	rs['data'] = check_choice_question(image,gray,docCnt)  #答题区域
+	print(rs)
 
 def check_admission_ticket(image,gray,docCnt):
 	paper = four_point_transform(image, docCnt.reshape(4, 2))
@@ -112,10 +108,8 @@ def check_admission_ticket(image,gray,docCnt):
 	ChQImg = cv2.blur(thresh, (23, 23))
 	#二进制二值化
 	ChQImg = cv2.threshold(ChQImg, 100, 225, cv2.THRESH_BINARY)[1]
-
-	cv2.imwrite('./55.jpg', thresh)
-	cv2.imwrite('./66.jpg', ChQImg)
-
+	# cv2.imwrite('./55.jpg', thresh)
+	# cv2.imwrite('./66.jpg', ChQImg)
 	cnts = cv2.findContours(ChQImg, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
 	cnts = cnts[0] if imutils.is_cv2() else cnts[1]
 	Answer = []
@@ -132,7 +126,7 @@ def check_admission_ticket(image,gray,docCnt):
 	            #保存选中模块的中心坐标
 	            Answer.append((cX, cY))
 
-	cv2.imwrite('./88.jpg', paper)   
+	#cv2.imwrite('./88.jpg', paper)   
 
 	xt1 = [17, 140, 269, 396, 521, 649, 772, 900, 1024, 1129]  #选项左侧x坐标 10
 	yt1 = [231, 311, 390, 473, 554, 635, 715, 793, 873, 953, 1016] #11
@@ -143,12 +137,12 @@ def check_admission_ticket(image,gray,docCnt):
 	        if i[0]>xt1[j] and i[0]<xt1[j+1]:
 	            for k in range(0,len(yt1)-1):
 	                if i[1]>yt1[k] and i[1]<yt1[k+1]:
-	                    rs = judge1(j,k)
-	                    if rs[0] in IDAnswer:
+	                    #rs = judge1(j,k)
+	                    if j in IDAnswer:
 	                    	print(int(j)+1, "项学号选了多个值\n")
-	                    	IDAnswer[rs[0]] = rs[1]
+	                    	IDAnswer[j] = k
 	                    else:
-	                    	IDAnswer[rs[0]] = rs[1]
+	                    	IDAnswer[j] = k
 
 	result = ""
 	for key in range(0, 9): #之后改为总题数 没写的自然就定为：题号：空
@@ -156,13 +150,11 @@ def check_admission_ticket(image,gray,docCnt):
 			result = result+"x"
 			continue
 		result = result + str(IDAnswer[key])
-		
-
-	print(result)
+	return result
 
 
-def judge1(x,y):
-	return (x, y)
+# def judge1(x,y):
+# 	return (x, y)
 
 
 def check_choice_question(image,gray,docCnt):
@@ -180,8 +172,8 @@ def check_choice_question(image,gray,docCnt):
 	ChQImg = cv2.blur(thresh, (23, 23))
 	#二进制二值化
 	ChQImg = cv2.threshold(ChQImg, 100, 225, cv2.THRESH_BINARY)[1]
-	cv2.imwrite('./55.jpg', thresh)
-	cv2.imwrite('./66.jpg', ChQImg)
+	# cv2.imwrite('./55.jpg', thresh)
+	# cv2.imwrite('./66.jpg', ChQImg)
 	'''
 	    threshold参数说明
 	    第一个参数 src    指原图像，原图像应该是灰度图。
@@ -211,12 +203,9 @@ def check_choice_question(image,gray,docCnt):
 	            #保存选中模块的中心坐标
 	            Answer.append((cX, cY))
 
-	cv2.imwrite('./77.jpg', paper)
-	        
-
+	# cv2.imwrite('./77.jpg', paper)
 	xt1 = [15, 120, 225, 330, 435, 645, 747, 852, 954, 1059, 1260, 1365, 1470, 1572, 1674, 1878, 1983, 2088, 2190, 2295, 2376]  #选项左侧x坐标 21
 	yt1 = [96, 192, 270, 351,429, 627, 735, 819, 900, 978, 1176, 1290, 1374, 1452, 1533, 1725, 1836, 1920, 1998, 2079, 2274, 2385, 2469, 2550, 2631, 2730] #选项上测y坐标 26
-
 	IDAnswer = {}
 	for i in Answer:
 	    for j in range(0,len(xt1)-1):
@@ -240,10 +229,8 @@ def check_choice_question(image,gray,docCnt):
 			result[key] = ""
 			continue
 		result[key] = IDAnswer[key]
-		
+	return result
 
-	print(result)
-	print(len(result))
 
 #题号
 def judgex0(x):
