@@ -42,6 +42,10 @@ def main():
 
 	for i in docCnt1:
 		cv2.circle(newimage, (i[0][0],i[0][1]), 50, (255, 0, 0), -1)
+
+	cv2.imwrite('./22.jpg', newimage)
+	return
+	
 	rs = {}
 	rs['admin'] = check_admission_ticket(image,gray,docCnt1)
 	rs['data'] = check_choice_question(image,gray,docCnt)  #答题区域
@@ -82,7 +86,7 @@ def check_admission_ticket(image,gray,docCnt):
 	                if i[1]>yt1[k] and i[1]<yt1[k+1]:
 	                    #rs = judge1(j,k)
 	                    if j in IDAnswer:
-	                    	print(int(j)+1, "项学号选了多个值\n")
+	                    	#print(int(j)+1, "项学号选了多个值\n")
 	                    	if int(k) < int(IDAnswer[j]):  #选了多选 取最大的数字
 	                    	    continue
 	                    	IDAnswer[j] = k
