@@ -140,6 +140,8 @@ def check_admission_ticket(image,gray,docCnt):
 	                    #rs = judge1(j,k)
 	                    if j in IDAnswer:
 	                    	print(int(j)+1, "项学号选了多个值\n")
+	                    	if int(k) < int(IDAnswer[j]):  #选了多选 取最大的数字
+	                    	    continue
 	                    	IDAnswer[j] = k
 	                    else:
 	                    	IDAnswer[j] = k
