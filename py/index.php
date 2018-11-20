@@ -1,5 +1,6 @@
 <?php
-
+	
+	echo phpinfo();die;
 	if(!isset($_REQUEST['path']) || !($path = trim($_REQUEST['path']))) {
         exit (json_encode(array('status'=>0, 'msg' => "path not found")));
     }
