@@ -12,8 +12,6 @@ def main():
 	edged = cv2.Canny(blurred, 10, 100)
 	cnts = cv2.findContours(edged, cv2.RETR_EXTERNAL,cv2.CHAIN_APPROX_SIMPLE)
 	cnts = cnts[0] if imutils.is_cv2() else cnts[1]
-
-
 	docCnt = None  
 	docCnt1 = None 
 	ss = 0
@@ -42,10 +40,8 @@ def main():
 
 	for i in docCnt1:
 		cv2.circle(newimage, (i[0][0],i[0][1]), 50, (255, 0, 0), -1)
-
-	cv2.imwrite('./22.jpg', newimage)
-	return
-	
+	# cv2.imwrite('./22.jpg', newimage)
+	# return
 	rs = {}
 	rs['admin'] = check_admission_ticket(image,gray,docCnt1)
 	rs['data'] = check_choice_question(image,gray,docCnt)  #答题区域
@@ -75,7 +71,7 @@ def check_admission_ticket(image,gray,docCnt):
 	            cv2.drawContours(paper, c, -1, (0, 0, 255), 5, lineType=0)
 	            cv2.circle(paper, (cX, cY), 7, (255, 255, 255), -1)
 	            Answer.append((cX, cY))
-	cv2.imwrite('/usr/www/scrapy/py/88.jpg', paper)   
+	#cv2.imwrite('/usr/www/scrapy/py/88.jpg', paper)   
 	xt1 = [17, 140, 269, 396, 521, 649, 772, 900, 1024, 1129]  
 	yt1 = [231, 311, 390, 473, 554, 635, 715, 793, 873, 953, 1016] 
 	IDAnswer = {}
@@ -128,7 +124,7 @@ def check_choice_question(image,gray,docCnt):
 	            cv2.circle(paper, (cX, cY), 7, (255, 255, 255), -1)
 	            Answer.append((cX, cY))
 
-	cv2.imwrite('/usr/www/scrapy/py/77.jpg', paper)
+	#cv2.imwrite('/usr/www/scrapy/py/77.jpg', paper)
 	xt1 = [15, 120, 225, 330, 435, 645, 747, 852, 954, 1059, 1260, 1365, 1470, 1572, 1674, 1878, 1983, 2088, 2190, 2295, 2376]  
 	yt1 = [96, 192, 270, 351,429, 627, 735, 819, 900, 978, 1176, 1290, 1374, 1452, 1533, 1725, 1836, 1920, 1998, 2079, 2274, 2385, 2469, 2550, 2631, 2730] 
 	IDAnswer = {}
