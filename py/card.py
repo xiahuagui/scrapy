@@ -32,7 +32,7 @@ def main(path):
 	            break
 	elif len(cnts)<=0:
 		#print("答题卡不符合规范，清重新扫描\n")
-		return {"status":0, "msg":"答题卡不符合规范，清重新扫描\n"}
+		return json.dumps({"status":0, "msg":"答题卡不符合规范，清重新扫描\n"})
 
 
 
