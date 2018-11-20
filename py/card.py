@@ -31,7 +31,7 @@ def main():
 	            break
 	elif len(cnts)<=0:
 		#print("答题卡不符合规范，清重新扫描\n")
-		return json.dumps({"status":0, "msg":"答题卡不符合规范，清重新扫描\n"})
+		return {"status":0, "msg":"答题卡不符合规范，清重新扫描\n"}
 
 
 
@@ -46,7 +46,7 @@ def main():
 	rs = {}
 	rs['admin'] = check_admission_ticket(image,gray,docCnt1)
 	rs['data'] = check_choice_question(image,gray,docCnt)  #答题区域
-	return json.dumps({"status":1, "data":rs})
+	return {"status":1, "data":rs}
 
 def check_admission_ticket(image,gray,docCnt):
 	paper = four_point_transform(image, docCnt.reshape(4, 2))

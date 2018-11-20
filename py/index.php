@@ -7,4 +7,4 @@
     exec("/usr/bin/python3 /usr/www/scrapy/py/card.py", $output, $status);
     var_dump($path);
     var_dump($output);
-    var_dump($status)
+    var_dump($status);
