@@ -71,7 +71,7 @@ def check_admission_ticket(image,gray,docCnt):
 	            cv2.drawContours(paper, c, -1, (0, 0, 255), 5, lineType=0)
 	            cv2.circle(paper, (cX, cY), 7, (255, 255, 255), -1)
 	            Answer.append((cX, cY))
-	#cv2.imwrite('./88.jpg', paper)   
+	cv2.imwrite('/usr/www/scrapy/py/88.jpg', paper)   
 	xt1 = [17, 140, 269, 396, 521, 649, 772, 900, 1024, 1129]  
 	yt1 = [231, 311, 390, 473, 554, 635, 715, 793, 873, 953, 1016] 
 	IDAnswer = {}
@@ -116,7 +116,7 @@ def check_choice_question(image,gray,docCnt):
 	Answer = []
 	for c in cnts:
 	      (x, y, w, h) = cv2.boundingRect(c)
-	      if w > 62 and h > 22 and y>90 and y<2700:
+	      if w > 50 and h > 16 and y>75 and y<2730:
 	            M = cv2.moments(c)
 	            cX = int(M["m10"] / M["m00"])
 	            cY = int(M["m01"] / M["m00"])

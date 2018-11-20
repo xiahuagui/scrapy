@@ -195,7 +195,7 @@ def check_choice_question(image,gray,docCnt):
 	for c in cnts:
 	     # 计算轮廓的边界框，然后利用边界框数据计算宽高比
 	      (x, y, w, h) = cv2.boundingRect(c)
-	      if w > 62 and h > 22 and y>90 and y<2700:
+	      if w > 50 and h > 16 and y>75 and y<2730:
 	            M = cv2.moments(c)
 	            cX = int(M["m10"] / M["m00"])
 	            cY = int(M["m01"] / M["m00"])
