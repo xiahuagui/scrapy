@@ -4,7 +4,7 @@ import imutils
 from imutils.perspective import four_point_transform
 
 def main():
-	#读入图片
+	#读入图片 
 	image = cv2.imread("./xin.jpg")
 	#转换为灰度图像
 	gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
