@@ -1,0 +1,726 @@
+﻿<!DOCTYPE html>
+<html lang="zh-cn">
+ <head>
+  <title></title>
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta charset="utf-8" />
+  <!-- <meta name="applicable-device" content="pc" />
+  <meta http-equiv="X-UA-Compatible" content="IE=11" />
+  <meta http-equiv="mobile-agent" content="format=html5; url=https://m.feixiaohao.com/" /> 
+  <link rel="alternate" media="only screen and(max-width: 640px)" href="//m.feixiaohao.com/" />
+  <link rel="canonical" href="//www.feixiaohao.com/" />-->
+  <link href="./css/stylesheet_nav.css-v=2.351.css" rel="stylesheet" />
+  <link href="./css/style-2.0.css-v=2.351.css" rel="stylesheet" />
+  <link href="./css/tablesort.css" rel="stylesheet" />
+  <link href="./js/skin/default/layer.css" rel="stylesheet" />
+  <script src="./js/jquery-2.1.1.js"></script>
+  <!-- <link rel="shortcut icon" href="//static.feixiaohao.com/themes/default/images/fav.ico" /> -->
+  <style>
+    .big_title_color{
+      color:#0291d6;
+    }
+  </style>
+ </head>
+ <body>
+  <div class="new-nav">
+   <div class="new-main-nav">
+    <!-- <div class="new-row" id="globalinfo"></div> -->
+
+    <div class="new-row">
+     <div class="new-left-side" style="width:50%;">
+      <a href="javascript:;" class="new-logo"><img src="./images/logo.png" /></a><!-- src="https://static.feixiaohao.com/themes/default/images/logo.png" -->
+      <p class="big_title big_title_color" type="1" style="float:left;font-size:16px;line-height:58px;margin-right:9%;cursor:pointer;">行情</p>
+      <p class="big_title" type="2" style="float:left;font-size:16px;line-height:58px;cursor:pointer;">交易所</p>
+     </div>
+     <div class="new-right-size">
+      <div class="searchForm">
+       <input id="input-sm" placeholder="搜币或者交易所..."  type="text" /> 
+       <i class="icon-search"><i class="fxh fxh-search"></i></i>
+      </div>
+     </div>
+    </div>
+
+
+   </div>
+
+   <div class="" style="width:100%;background:#F6F6F6;height:15px;"></div> <!-- 间隔 -->
+
+   <div class="new-main-nav" style="height:100px;background:#F4F4F4;">
+    <div class="new-row" style="height:100%;background:#fff;">
+     <div class="new-left-side" style="height:100%;">
+      <div class="new-hot-pair new-hot-pair1" style="height:100%;">
+
+        <!-- <a class="new-cell" id="hotPait-bitcoin" target="_blank" href="javascript:;" style="height:54px;margin: 23px 0 0 0;padding:0 15px 0 15px;border-right: 1px solid #e5e5e5;">
+          <div class="tit">
+            <img src="https://static.feixiaohao.com/coin/7033f2f2c2a16094bbb3bafc47205ba8_small.png">BTC
+          </div>
+          <div class="val">
+            <span class="value">￥26979</span>
+            <span class="line" style="display: none;">3745,3787,3767,3777,3879,4112,4071,4173,4237,4177,4333,4345,4271,4305,4058,4070,4019,4005,4158,4272,4216,4145,4119,4182,4030,4033,3886,3905
+            </span>
+          </div>
+        </a> -->
+
+
+      </div>
+     </div>
+
+    </div>
+   </div>
+
+   <div class="" style="width:100%;background:#F6F6F6;height:15px;"></div> <!-- 间隔 -->
+
+  </div>
+  <div class="m120"></div>
+  <div class="new-wrapper">
+  
+  <!-- 搜索结果 -->
+  <div class="box2 box815" style="display:none;background:#fff;">
+     <div class="slide">
+      <div class="active" type=3>
+       币种
+      </div>
+      <div type=4>
+       交易平台
+      </div>
+     </div>
+     <div class="slidebody slidebody3" style="min-height:830px">
+      <table class="new-table new-coin-list" id="table3">
+       <thead>
+        <tr>
+         <th class="th-num">#</th>
+         <th class="th-coin-name" data-sort-method="none">名称</th>
+         <th class="th-marketcap">流通市值</th>
+         <th class="th-price">价格</th>
+         <th class="th-turnover">流通数量</th>
+         <th class="th-vol">成交额(24h)</th>
+         <th class="th-rank">涨幅(24h)</th>
+         <th class="th-coin-char" data-sort-method="none">价格趋势(7d)</th>
+        </tr>
+       </thead>
+       <tbody>
+        
+       </tbody>
+      </table>
+      <div class="m15"></div>
+     </div>
+     <div class="slidebody slidebody4" style="min-height:830px;display:none">
+      <table class="new-table new-coin-list" id="table4">
+       <thead>
+        <tr>
+         <th>#</th>
+         <th>名称</th>
+         <th>成交额（24h）</th>
+         <th>交易对</th>
+         <th>国家</th>
+         <th>交易类型</th>
+         <th>星级</th>
+         <th>关注数</th>
+        </tr>
+       </thead>
+       <tbody>
+        
+       </tbody>
+      </table>
+      <!-- <div class="m15"></div> -->
+     </div>
+  </div>
+
+  <!-- 默认显示内容页 -->
+  <div class="new-main-box">
+    <div class="new-box-tit new-tab-tit">
+     <h1 class="new-cell-tit active" style="margin:5px auto auto 10px;">币值榜</h1>
+
+     <div class="new-box-tools" style="float:right;margin:12px 2% auto auto;">
+      <a class="" href="javascript:;" target="_blank">查看全部</a>
+     </div>
+
+    </div>
+
+    <table class="new-table new-coin-list" id="table">
+     <thead>
+      <tr>
+       <th class="th-num">#</th>
+       <th class="th-coin-name" data-sort-method="none">名称</th>
+       <th class="th-marketcap">流通市值</th>
+       <th class="th-price">价格</th>
+       <th class="th-turnover">流通数量</th>
+       <th class="th-vol">成交额(24h)</th>
+       <th class="th-rank">涨幅(24h)</th>
+       <th class="th-coin-char" data-sort-method="none">价格趋势(7d)</th>
+      </tr>
+     </thead>
+     <tbody>
+        
+
+     </tbody>
+    </table>
+
+    <table class="new-table new-coin-list" style="display:none;" id="table2">
+     <thead>
+      <tr>
+       <th>#</th>
+       <th>名称</th>
+       <th>成交额（24h）</th>
+       <th>交易对</th>
+       <th>国家</th>
+       <th>交易类型</th>
+       <th>星级</th>
+       <th>关注数</th>
+      </tr>
+     </thead>
+     <tbody>
+    
+      
+     </tbody>
+    </table>
+
+
+    <div class="new-table-bar">
+     <div class="new-page-list">
+      <!-- <a href="javascript:;" class="btn btn-white">&lt;</a> 
+      <a href="javascript:;" class="btn btn-white active">1</a>
+      <a class="btn btn-white" href="javascript:;">2</a>
+      <a class="btn btn-white" href="javascript:;">3</a>
+      <a class="btn btn-white" href="javascript:;">4</a>
+      <a class="btn btn-white" href="javascript:;">5</a>
+      <a href="javascript:;" class="btn btn-white">...</a>
+      <a class="btn btn-white" href="javascript:;">25</a>
+      <a class="btn btn-white" href="javascript:;">&gt;</a> -->
+     </div>
+     <span></span>
+    </div>
+  </div>
+
+  <div class="new-side-box" style="background:#fff">
+
+    <div class="new-hot-pair new-hot-pair2" style="height:100%;margin-left:20%;">
+      <!-- <a class="new-cell" id="hotPait-ethereum" target="_blank" href="javascript:;" style="height:54px;margin: 23px 0 0 0;padding:0 15px 0 15px;border-right: 1px solid #e5e5e5;">
+        <div class="tit">
+          <img src="https://static.feixiaohao.com/coin/8cc736e4abd44c3d689eb1599a27edb_small.png">ETH
+        </div>
+        <div class="val">
+          <span class="value">￥756</span>
+          <span class="line" style="display: none;">107,108,106,108,113,117,116,118,122,118,121,121,118,119,114,116,113,113,118,119,119,117,117,117,114,114,109,109
+          </span>
+        </div>
+      </a> -->
+    </div>
+  </div>
+
+   <div class="new-side-box" id="new-side-box-updownlist" style="background:#fff">
+    <div class="new-box-tit new-tab-tit" id="up_down_data_type">
+     <div class="new-cell-tit active" data-datatype="up" style="margin:5px auto auto 10px;">
+      涨幅榜
+     </div>
+     <div class="new-cell-tit" data-datatype="down" style="margin:7px auto auto 10px;">
+      跌幅榜
+     </div>
+     
+      <a href="javascript:;" class="" title="更多" style="display:none;">
+        <img title="更多" style="float:right;cursor:pointer;margin:15px 10px auto auto;" src="./images/more.jpg"/>
+      </a>
+    </div>
+    <div class="new-slide-btn" id="listType" style="margin-left:10px;">
+     <button>全部
+      <img title="更多" style="" src="./images/jiantou.jpg"/>
+     </button>
+     <ul class="new-slide-sub" style="display:none">
+      <li data-type="1" class="active"><a>全部</a></li>
+      <li data-type="2"><a>前10交易所</a></li>
+     </ul>
+    </div>
+    <div class="new-slide-btn" id="time">
+     <button>24小时
+      <img title="更多" style="" src="./images/jiantou.jpg"/>
+     </button>
+     <ul class="new-slide-sub" style="display:none">
+      <li data-type="1"><a>1小时</a></li>
+      <li data-type="2" class="active"><a>24小时</a></li>
+      <li data-type="3"><a>1周</a></li>
+     </ul>
+    </div>
+    <div class="new-tab-cell">
+     <div id="table-info2" style="min-height:345px;margin-top:10px">
+      
+      <table class="new-side-table range-table" id="up_down_tb">
+       <thead>
+        <tr>
+         <th>#</th>
+         <th>名称</th>
+         <th>价格</th>
+         <th>% 24小时</th>
+        </tr>
+       </thead>
+       <tbody>
+        
+       </tbody>
+      </table>
+
+     </div>
+    </div>
+   </div>
+   
+   <div class="new-side-box" style="background:#fff">
+    <div class="new-box-tit" style="margin:5px auto 10px 10px;">
+     <h2>成交额排行榜</h2>
+      <a href="javascript:;" class="" title="更多" style="display:none;">
+        <img title="更多" style="float:right;cursor:pointer;margin:5px 10px auto auto;" src="./images/more.jpg"/>
+      </a>
+    </div>
+    <div class="new-tab-cell new-tab-box">
+     <div class="new-tab-tit" style="margin-left:10px;" id="volume_tit">
+      <div class="new-tab-subtit active" type="vol_exchange">
+       交易所
+      </div>
+      <div class="new-tab-subtit" type="vol_coin">
+       币种
+      </div>
+     </div>
+     <div class="new-tab-cell vol_exchange">
+      <table class="new-side-table range-table" id="vol_exchange">
+       <thead>
+        <tr>
+         <th>#</th>
+         <th>名称</th>
+         <th>成交额</th>
+        </tr>
+       </thead>
+       <tbody>
+        <!-- <tr>
+         <td><span>1</span></td>
+         <td><a href="javascript:;"> <img src="https://static.feixiaohao.com/platimages/20180623/daacc745ee474414ac62bbcbacea0785_16_16.png" /> Bithumb </a></td>
+         <td>￥983,838万</td>
+        </tr> -->
+        
+       </tbody>
+      </table>
+     </div>
+     <div class="new-tab-cell vol_coin" style="display:none">
+      <table class="new-side-table range-table" id="vol_coin">
+       <thead>
+        <tr>
+         <th>#</th>
+         <th>名称</th>
+         <th>成交额</th>
+        </tr>
+       </thead>
+       <tbody>
+        <!-- <tr>
+         <td><span>1</span></td>
+         <td><a href="javascript:;" target="_blank"> <img src="https://static.feixiaohao.com/coin/7033f2f2c2a16094bbb3bafc47205ba8_small.png" alt="BTC-比特币" /> BTC-比特币 </a></td>
+         <td>￥2,421,877万</td>
+        </tr> -->
+        
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+
+  </div>
+  <div class="footer">
+   <div class="new-row">
+
+    <ul class="footer-group">
+     <li><a href="javascript:;">关于我们</a></li>
+     <li><a href="javascript:;">关于客服</a></li>
+     <li><a href="javascript:;">合作招商</a></li>
+     <li><a href="javascript:;">营销中心</a></li>
+     <li><a href="javascript:;">企业入驻</a></li>
+     <li><a href="javascript:;" target="_blank">企业信息查询</a></li>
+     <li><a href="javascript:;" target="_blank">隐私政策</a></li>
+    </ul>
+    <div class="copy-right">
+     &copy;2017-2018 Binance.com. All rights reserved
+     <!-- <a href=""> 备案号：</a>
+     <a href="javascript:;" target="_blank">粤ICP备16116847号-8</a>  -->
+    </div>
+   </div>
+  </div>
+  <!-- <div class="totop"> 返回顶页
+   <div class="top"></div>
+  </div> -->
+  <script src="./js/layer.js"></script>
+  <script src="./js/jquery.peity.min.js"></script>
+  <script src="./js/tablesort.js"></script>
+  <script type="text/javascript">
+    //获取行情数据
+    var MAIN_TYPE = 1;
+    get_main_data(1, 1, 'cn'); //展示主数据
+    get_line_data();           //展示图标数据
+    get_up_down_data("up", 1, 2);  //获取涨跌榜数据
+    get_volume_data("vol_exchange");    //获取交易额排行数据
+    /**
+     * 获取主数据 
+     * type：1为行情数据 2为交易所数据 
+     * page为页码
+     * lang: cn中文 us英文
+     */
+    function get_main_data(type, page, lang, pageSize=100){
+      MAIN_TYPE = type;
+      $.ajax({
+        url:"/Index/index",
+        type:"POST",
+        data:{
+          'type':type,
+          'page':page,
+          'lang':lang,
+          'pageSize':pageSize
+        },
+        beforeSend:function(){
+          layer.load();
+        },
+        success:function(e){
+          var rs = $.parseJSON(e);
+          layer.closeAll('loading');
+          $(".new-main-box").css("display", "block");
+          $(".box815").css("display", "none");
+          if(!rs.status){
+            $("#table tbody").empty();
+            //$("#table2 tbody").empty();
+            return;
+          }
+          var str = "";
+          $.each(rs.data, function(k,v){
+            var num = (parseInt(page)-1)*parseInt(pageSize) + parseInt(k) + 1;
+            if(MAIN_TYPE == 1){
+              str += '<tr><td>'+num+'</td><td><a href="javascript:;" target="_blank"> <img src="'+v.icon+'" tppabs="" />'+v.name+' </a></td><td class="market-cap" data-usd="" data-cny="" data-btc="">'+v.market_cap_show+'</td><td><a href="javascript:;" target="_blank" class="price" data-usd="" data-cny="" data-btc="">'+v.price_show+'</a></td><td>'+v.num+'</td><td><a href="javascript:;" target="_blank" class="volume" data-usd="" data-cny="" data-btc="">'+v.volume_show+'</a></td><td class="change"><span class="new-text-red">'+v.text_red+'</span></td><td class="char"><span class="line2">'+v.char_line+'</span></td></tr>';
+            } else {
+              str += '<tr><td>'+num+'</td><td><a href="javascript:;"> <img src="'+v.icon+'" /> '+v.name+' </a></td><td><a href="javascript:;">'+v.turnover+'</a></td><td><a target="_blank" href="javascript:;">'+v.transaction_pair+'</a></td><td><a href="javascript:;">'+v.country+'</a></td>'+v.transaction_types+'<td><div class="'+v.stars+'"></div></td><td><div>'+v.follows+'</div></td></tr>';
+            }
+          });
+          if(MAIN_TYPE == 1){
+            $("#table").css("display", "inline-table");
+            $("#table2").css("display", "none");
+            $("#table tbody").empty().append(str);
+            show_line();
+          } else {
+            $("#table2").css("display", "inline-table");
+            $("#table").css("display", "none");
+            $("#table2 tbody").empty().append(str);
+          }
+          set_page(rs.total, page, pageSize);  //显示页码
+        }
+      });
+    }
+
+
+    /**
+     * 展示图标数据
+     */
+    function get_line_data(){
+      $.ajax({
+        url:"/Index/linedata",
+        type:"POST",
+        data:{},
+        beforeSend:function(){
+          layer.load();
+        },
+        success:function(e){
+          var rs = $.parseJSON(e);
+          layer.closeAll('loading');
+          if(!rs.status){
+            $(".new-hot-pair1").empty();
+            $(".new-hot-pair2").empty();
+            return;
+          }
+          var str = "";
+          var str1 = "";
+          $.each(rs.data, function(k,v){
+            if(k == 4){
+              str1 += '<a class="new-cell" id="hotPait-bitcoin" target="_blank" href="javascript:;" style="height:54px;margin: 23px 0 0 0;padding:0 15px 0 15px;border-right: 1px solid #e5e5e5;"><div class="tit"><img src="'+v.icon+'">'+v.name+'</div><div class="val"><span class="value">￥'+v.price_cny+'</span><span class="line" style="display: none;">'+v.char_line+'</span></div></a>';
+            } else {
+              str += '<a class="new-cell" id="hotPait-bitcoin" target="_blank" href="javascript:;" style="height:54px;margin: 23px 0 0 0;padding:0 15px 0 15px;border-right: 1px solid #e5e5e5;"><div class="tit"><img src="'+v.icon+'">'+v.name+'</div><div class="val"><span class="value">￥'+v.price_cny+'</span><span class="line" style="display: none;">'+v.char_line+'</span></div></a>';
+            }
+          });
+          $(".new-hot-pair1").empty().append(str);
+          $(".new-hot-pair2").empty().append(str1);
+          show_line1();
+        }
+      });
+    }
+
+    /**
+     * 分页
+     */
+    $("body").off("click", ".new-table-bar .new-page-list a").on("click", ".new-table-bar .new-page-list a", function(){
+      var page = $(this).attr("data-dt-idx");
+      get_main_data(MAIN_TYPE, page, 'cn');
+    });
+
+    /**
+     * 查看全部
+     */
+    $("body").off("click", ".new-box-tools a").on("click", ".new-box-tools a", function(){
+      get_main_data(MAIN_TYPE, 1, 'cn', 3000);
+    });
+
+    /**
+     * 行情与交易所相互切换
+     */
+    $("body").off("click", ".big_title").on("click", ".big_title", function(){
+      if($(this).hasClass("big_title_color")){
+        return;
+      }
+      $(".big_title").removeClass("big_title_color");
+      $(this).addClass("big_title_color");
+      get_main_data($(this).attr("type"), 1, 'cn');
+    });
+
+
+
+    /**
+     * 涨跌幅切换事件
+     */
+    $("body").off("click", "#new-side-box-updownlist .new-cell-tit").on("click", "#new-side-box-updownlist .new-cell-tit", function(){
+      if($(this).hasClass("active")){
+        return;
+      }
+      $("#new-side-box-updownlist .new-cell-tit").removeClass("active");
+      $(this).addClass("active");
+      $("#time").find("ul").css("display","none");
+      $(".new-slide-btn ul").css("display","none");  //隐藏下拉选项
+      var data_type = $(this).attr("data-datatype");
+      var searchtype = get_type($("#listType ul li"));
+      var timetype = get_type($("#time ul li"));
+      get_up_down_data(data_type, searchtype, timetype);  //获取涨跌榜数据
+    });
+
+    
+    /**
+     * 获取涨跌榜数据
+     */
+    function get_up_down_data(data_type, searchtype, timetype) {
+      $.ajax({
+        url:"/Index/get_up_down_data",
+        type:"POST",
+        data:{
+          'data_type':data_type,
+          'searchtype':searchtype,
+          'timetype':timetype
+        },
+        beforeSend:function(){
+          layer.load();
+        },
+        success:function(e){
+          var rs = $.parseJSON(e);
+          layer.closeAll('loading');
+          if(!rs.status){
+            $("#up_down_tb tbody").empty();
+            return;
+          }
+          var str = "";
+          $.each(rs.data, function(k,v){
+            var num = parseInt(k) + 1;
+            var cla = v.percentage.indexOf("-") === 0 ? "rang-tag-red" : "rang-tag-green";
+            str += '<tr><td><span>'+num+'</span></td><td><a href="javascript:;" target="_blank"><img src="'+v.icon+'" />'+v.abbreviation+'</a></td><td>'+v.price+'</td><td><span class="'+cla+'">'+v.percentage+'</span></td></tr>';
+          });
+          $("#up_down_tb tbody").empty().append(str);
+        }
+      });
+    }
+
+    function get_type(obj){
+      for(var i=0;i<obj.length;i++){
+        if(!obj.eq(i).hasClass("active")){
+          continue;
+        }
+        return obj.eq(i).attr("data-type");
+      }
+    }
+
+
+    /**
+     * 下拉框交替
+     */
+    $("body").off("click", ".new-slide-btn").on("click", ".new-slide-btn", function(){
+      var id = $(this).attr("id");
+      if(id == "listType"){
+        $("#time").find("ul").css("display","none");
+      } else {
+        $("#listType").find("ul").css("display","none");
+      }
+      $(this).find("ul").fadeToggle("fast");
+    });
+
+
+    /**
+     * 下拉框选择
+     */
+    $("body").off("click", ".new-slide-btn ul li").on("click", ".new-slide-btn ul li", function(){
+      if($(this).hasClass("active")){
+        return;
+      }
+      $(this).siblings("li").removeClass("active");
+      $(this).addClass("active");
+      $(this).parent("ul").prev("button").html($(this).children("a").text()+'<img title="更多" style="" src="./images/jiantou.jpg">');
+      var data_type = "up";
+      for(var i=0;i<$("#up_down_data_type .new-cell-tit").length;i++){
+        if($("#up_down_data_type .new-cell-tit").eq(i).hasClass("active")){
+          data_type = $("#up_down_data_type .new-cell-tit").eq(i).attr("data-datatype");
+        }
+      }
+      var searchtype = get_type($("#listType ul li"));
+      var timetype = get_type($("#time ul li"));
+      get_up_down_data(data_type, searchtype, timetype);  //获取涨跌榜数据
+    });
+
+    //搜索 回车
+    $('body').off('keypress','#input-sm').on('keypress','#input-sm',function(e){
+      if(e.which != 13){
+        return false;   
+      }
+      var text = $.trim($(this).val());
+      if(!text){
+        return false;
+      }
+      search(text);
+    });
+
+    //搜索 点击
+    $('body').off('click','.icon-search').on('click','.icon-search',function(e){
+      var text = $.trim($("#input-sm").val());
+      if(!text){
+        return false;
+      }
+      search(text);
+    });
+
+    /**
+     * 搜索
+     */
+    function search(text){
+      $.ajax({
+        url:"/Index/search",
+        type:"POST",
+        data:{
+          'search':text,
+        },
+        beforeSend:function(){
+          layer.load();
+        },
+        success:function(e){
+          var rs = $.parseJSON(e);
+          layer.closeAll('loading');
+          $(".box815").css("display", "block");
+          $(".new-main-box").css("display", "none");
+          if(!rs.status){
+            $("#table3 tbody").empty();  
+            $("#table4 tbody").empty();  
+            return;
+          }
+          var str = "";
+          var str1 = "";
+          $.each(rs.data, function(k,v){
+            var num = parseInt(k) + 1;
+            str += '<tr><td>'+num+'</td><td><a href="javascript:;" target="_blank"> <img src="'+v.icon+'" tppabs="" />'+v.name+' </a></td><td class="market-cap" data-usd="" data-cny="" data-btc="">'+v.market_cap_show+'</td><td><a href="javascript:;" target="_blank" class="price" data-usd="" data-cny="" data-btc="">'+v.price_show+'</a></td><td>'+v.num+'</td><td><a href="javascript:;" target="_blank" class="volume" data-usd="" data-cny="" data-btc="">'+v.volume_show+'</a></td><td class="change"><span class="new-text-red">'+v.text_red+'</span></td><td class="char"><span class="line2">'+v.char_line+'</span></td></tr>';
+          });
+          $.each(rs.data1, function(k,v){
+            var num = parseInt(k) + 1;
+            str1 += '<tr><td>'+num+'</td><td><a href="javascript:;"> <img src="'+v.icon+'" /> '+v.name+' </a></td><td><a href="javascript:;">'+v.turnover+'</a></td><td><a target="_blank" href="javascript:;">'+v.transaction_pair+'</a></td><td><a href="javascript:;">'+v.country+'</a></td>'+v.transaction_types+'<td><div class="'+v.stars+'"></div></td><td><div>'+v.follows+'</div></td></tr>';
+          });
+          $("#table3 tbody").empty().append(str);
+          $("#table4 tbody").empty().append(str1);
+          show_line();
+        }
+      });
+    }
+
+    //切换搜索结果
+    $('body').off('click','.box815 .slide div').on('click','.box815 .slide div',function(e){
+      if($(this).hasClass("active")){
+        return;
+      }
+      $(this).siblings("div").removeClass("active");
+      $(this).addClass("active");
+      var type = $(this).attr("type");
+      $(".slidebody").css("display", "none");
+      $(".slidebody"+type).css("display", "block");
+    });
+
+    //查看成交额排行
+    $('body').off('click','#volume_tit .new-tab-subtit').on('click','#volume_tit .new-tab-subtit',function(e){
+      if($(this).hasClass("active")){
+        return;
+      }
+      $(this).siblings("div").removeClass("active");
+      $(this).addClass("active");
+      var type = $(this).attr("type");
+      $(".vol_coin").css("display", "none");
+      $(".vol_exchange").css("display", "none");
+      $("."+type).css("display", "block");
+      get_volume_data(type);
+    });
+
+
+    function get_volume_data(type){
+      $.ajax({
+        url:"/Index/get_volume_data",
+        type:"POST",
+        data:{
+          'type':type,
+        },
+        beforeSend:function(){
+          layer.load();
+        },
+        success:function(e){
+          var rs = $.parseJSON(e);
+          layer.closeAll('loading');
+          if(!rs.status){
+            $("#"+type+" tbody").empty();   
+            return;
+          }
+          var str = "";
+          $.each(rs.data, function(k,v){
+            var num = parseInt(k) + 1;
+            str += '<tr><td><span>'+num+'</span></td><td><a href="javascript:;"> <img src="'+v.icon+'" /> '+v.name+' </a></td><td>'+v.price+'</td></tr>';
+          });
+          $("#"+type+" tbody").empty().append(str);
+        }
+      });
+      
+    }
+
+
+    
+
+    
+
+    /**
+     * 显示页码
+     */
+    function set_page(number, page=1, pageSize=100){
+      var page = parseInt(page);
+      var pageSize = parseInt(pageSize);
+      var str = '<a href="javascript:;" class="btn btn-white" data-dt-idx="1">首页</a>';
+      for(var i = page-2;i<=page-1;i++){
+        if(i <= 0){
+          continue;
+        }
+        str += '<a class="btn btn-white" href="javascript:;" data-dt-idx='+i+'>'+i+'</a>';
+      }
+      str += '<a href="javascript:;" class="btn btn-white active" data-dt-idx='+page+'>'+page+'</a>';
+      for(var i = page+1;i<=page+2;i++){
+        if(i > Math.ceil(parseInt(number)/pageSize)){
+          continue;
+        }
+        str += '<a class="btn btn-white" href="javascript:;" data-dt-idx='+i+'>'+i+'</a>';
+      }
+      str += '<a class="btn btn-white" href="javascript:;" data-dt-idx='+Math.ceil(parseInt(number)/pageSize)+'>末页</a>';
+      $(".new-table-bar .new-page-list").empty().append(str);
+    }
+
+
+    function show_line(){
+      new Tablesort(document.getElementById('table'));
+      $('.line2').peity('line',{width:80,height:20,fill:'none',strokeWidth:1,min:10000,stroke:'#3499da'});
+    }
+
+    function show_line1(){
+      $('.line').peity("line",{width:60,height:25,fill:'#EFF6FF',min:99999,strokeWidth:1});
+    }
+  </script>
+ </body>
+</html>
