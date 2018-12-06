@@ -1,0 +1,167 @@
+112.27.203.124 - - [20/Nov/2018 01:40:59] "GET /path=/usr/deploy/scrapy/py/xin.jpg HTTP/1.1" 200 1089
+Traceback (most recent call last):
+  File "/usr/local/python3.6/lib/python3.6/wsgiref/handlers.py", line 137, in run
+    self.result = application(self.environ, self.start_response)
+  File "/usr/deploy/scrapy/py/hello.py", line 6, in application
+    path=environ['PATH_INFO'].split("=")[1]
+IndexError: list index out of range
+112.27.203.124 - - [20/Nov/2018 01:40:59] "GET /favicon.ico HTTP/1.1" 500 59
+112.27.203.124 - - [20/Nov/2018 01:41:01] "GET /path=/usr/deploy/scrapy/py/xin.jpg HTTP/1.1" 200 1089
+Traceback (most recent call last):
+  File "/usr/local/python3.6/lib/python3.6/wsgiref/handlers.py", line 137, in run
+    self.result = application(self.environ, self.start_response)
+  File "/usr/deploy/scrapy/py/hello.py", line 6, in application
+    path=environ['PATH_INFO'].split("=")[1]
+IndexError: list index out of range
+112.27.203.124 - - [20/Nov/2018 01:41:04] "GET /favicon.ico HTTP/1.1" 500 59
+112.27.203.124 - - [20/Nov/2018 01:41:06] "GET /path=/usr/deploy/scrapy/py/xin.jpg HTTP/1.1" 200 1089
+Traceback (most recent call last):
+  File "/usr/local/python3.6/lib/python3.6/wsgiref/handlers.py", line 137, in run
+    self.result = application(self.environ, self.start_response)
+  File "/usr/deploy/scrapy/py/hello.py", line 6, in application
+    path=environ['PATH_INFO'].split("=")[1]
+IndexError: list index out of range
+112.27.203.124 - - [20/Nov/2018 01:41:07] "GET /favicon.ico HTTP/1.1" 500 59
+112.27.203.124 - - [20/Nov/2018 01:41:10] "GET /path=/usr/deploy/scrapy/py/xin.jpg HTTP/1.1" 200 1089
+Traceback (most recent call last):
+  File "/usr/local/python3.6/lib/python3.6/wsgiref/handlers.py", line 137, in run
+    self.result = application(self.environ, self.start_response)
+  File "/usr/deploy/scrapy/py/hello.py", line 6, in application
+    path=environ['PATH_INFO'].split("=")[1]
+IndexError: list index out of range
+112.27.203.124 - - [20/Nov/2018 01:41:10] "GET /favicon.ico HTTP/1.1" 500 59
+112.27.203.124 - - [20/Nov/2018 01:41:12] "GET /path=/usr/deploy/scrapy/py/xin.jpg HTTP/1.1" 200 1089
+Traceback (most recent call last):
+  File "/usr/local/python3.6/lib/python3.6/wsgiref/handlers.py", line 137, in run
+    self.result = application(self.environ, self.start_response)
+  File "/usr/deploy/scrapy/py/hello.py", line 6, in application
+    path=environ['PATH_INFO'].split("=")[1]
+IndexError: list index out of range
+112.27.203.124 - - [20/Nov/2018 01:41:14] "GET /favicon.ico HTTP/1.1" 500 59
+112.27.203.124 - - [20/Nov/2018 01:41:16] "GET /path=/usr/deploy/scrapy/py/xin.jpg HTTP/1.1" 200 1089
+Traceback (most recent call last):
+  File "/usr/local/python3.6/lib/python3.6/wsgiref/handlers.py", line 137, in run
+    self.result = application(self.environ, self.start_response)
+  File "/usr/deploy/scrapy/py/hello.py", line 6, in application
+    path=environ['PATH_INFO'].split("=")[1]
+IndexError: list index out of range
+112.27.203.124 - - [20/Nov/2018 01:41:16] "GET /favicon.ico HTTP/1.1" 500 59
+112.27.203.124 - - [20/Nov/2018 01:41:17] "GET /path=/usr/deploy/scrapy/py/xin.jpg HTTP/1.1" 200 1089
+Traceback (most recent call last):
+  File "/usr/local/python3.6/lib/python3.6/wsgiref/handlers.py", line 137, in run
+    self.result = application(self.environ, self.start_response)
+  File "/usr/deploy/scrapy/py/hello.py", line 6, in application
+    path=environ['PATH_INFO'].split("=")[1]
+IndexError: list index out of range
+112.27.203.124 - - [20/Nov/2018 01:41:18] "GET /favicon.ico HTTP/1.1" 500 59
+112.27.203.124 - - [20/Nov/2018 01:59:23] "GET /path=/usr/deploy/scrapy/py/xin.jpg HTTP/1.1" 200 1089
+Traceback (most recent call last):
+  File "/usr/local/python3.6/lib/python3.6/wsgiref/handlers.py", line 137, in run
+    self.result = application(self.environ, self.start_response)
+  File "/usr/deploy/scrapy/py/hello.py", line 6, in application
+    path=environ['PATH_INFO'].split("=")[1]
+IndexError: list index out of range
+112.27.203.124 - - [20/Nov/2018 01:59:27] "GET /favicon.ico HTTP/1.1" 500 59
+112.27.203.124 - - [20/Nov/2018 01:59:30] "GET /path=/usr/deploy/scrapy/py/xin.jpg HTTP/1.1" 200 1089
+Traceback (most recent call last):
+  File "/usr/local/python3.6/lib/python3.6/wsgiref/handlers.py", line 137, in run
+    self.result = application(self.environ, self.start_response)
+  File "/usr/deploy/scrapy/py/hello.py", line 6, in application
+    path=environ['PATH_INFO'].split("=")[1]
+IndexError: list index out of range
+112.27.203.124 - - [20/Nov/2018 01:59:30] "GET /favicon.ico HTTP/1.1" 500 59
+112.27.203.124 - - [20/Nov/2018 03:35:21] "GET /path=/usr/deploy/scrapy/py/xin.jpg HTTP/1.1" 200 1089
+Traceback (most recent call last):
+  File "/usr/local/python3.6/lib/python3.6/wsgiref/handlers.py", line 137, in run
+    self.result = application(self.environ, self.start_response)
+  File "/usr/deploy/scrapy/py/hello.py", line 6, in application
+    path=environ['PATH_INFO'].split("=")[1]
+IndexError: list index out of range
+112.27.203.124 - - [20/Nov/2018 03:35:24] "GET /favicon.ico HTTP/1.1" 500 59
+112.27.203.124 - - [20/Nov/2018 03:35:29] "GET /path=/usr/deploy/scrapy/py/xin.jpg HTTP/1.1" 200 1089
+Traceback (most recent call last):
+  File "/usr/local/python3.6/lib/python3.6/wsgiref/handlers.py", line 137, in run
+    self.result = application(self.environ, self.start_response)
+  File "/usr/deploy/scrapy/py/hello.py", line 6, in application
+    path=environ['PATH_INFO'].split("=")[1]
+IndexError: list index out of range
+112.27.203.124 - - [20/Nov/2018 03:35:30] "GET /favicon.ico HTTP/1.1" 500 59
+112.27.203.124 - - [20/Nov/2018 03:35:57] "GET /path=/usr/deploy/scrapy/py/xin.jpg HTTP/1.1" 200 1089
+Traceback (most recent call last):
+  File "/usr/local/python3.6/lib/python3.6/wsgiref/handlers.py", line 137, in run
+    self.result = application(self.environ, self.start_response)
+  File "/usr/deploy/scrapy/py/hello.py", line 6, in application
+    path=environ['PATH_INFO'].split("=")[1]
+IndexError: list index out of range
+112.27.203.124 - - [20/Nov/2018 03:35:57] "GET /favicon.ico HTTP/1.1" 500 59
+112.27.203.124 - - [20/Nov/2018 03:35:59] "GET /path=/usr/deploy/scrapy/py/xin.jpg HTTP/1.1" 200 1089
+Traceback (most recent call last):
+  File "/usr/local/python3.6/lib/python3.6/wsgiref/handlers.py", line 137, in run
+    self.result = application(self.environ, self.start_response)
+  File "/usr/deploy/scrapy/py/hello.py", line 6, in application
+    path=environ['PATH_INFO'].split("=")[1]
+IndexError: list index out of range
+112.27.203.124 - - [20/Nov/2018 03:36:00] "GET /favicon.ico HTTP/1.1" 500 59
+112.27.203.124 - - [20/Nov/2018 03:36:01] "GET /path=/usr/deploy/scrapy/py/xin.jpg HTTP/1.1" 200 1089
+Traceback (most recent call last):
+  File "/usr/local/python3.6/lib/python3.6/wsgiref/handlers.py", line 137, in run
+    self.result = application(self.environ, self.start_response)
+  File "/usr/deploy/scrapy/py/hello.py", line 6, in application
+    path=environ['PATH_INFO'].split("=")[1]
+IndexError: list index out of range
+112.27.203.124 - - [20/Nov/2018 03:36:02] "GET /favicon.ico HTTP/1.1" 500 59
+112.27.203.124 - - [20/Nov/2018 03:36:03] "GET /path=/usr/deploy/scrapy/py/xin.jpg HTTP/1.1" 200 1089
+Traceback (most recent call last):
+  File "/usr/local/python3.6/lib/python3.6/wsgiref/handlers.py", line 137, in run
+    self.result = application(self.environ, self.start_response)
+  File "/usr/deploy/scrapy/py/hello.py", line 6, in application
+    path=environ['PATH_INFO'].split("=")[1]
+IndexError: list index out of range
+112.27.203.124 - - [20/Nov/2018 03:36:06] "GET /favicon.ico HTTP/1.1" 500 59
+112.27.203.124 - - [20/Nov/2018 03:44:09] "GET /path=/usr/deploy/scrapy/py/xin.jpg HTTP/1.1" 200 1089
+Traceback (most recent call last):
+  File "/usr/local/python3.6/lib/python3.6/wsgiref/handlers.py", line 137, in run
+    self.result = application(self.environ, self.start_response)
+  File "/usr/deploy/scrapy/py/hello.py", line 6, in application
+    path=environ['PATH_INFO'].split("=")[1]
+IndexError: list index out of range
+112.27.203.124 - - [20/Nov/2018 03:44:09] "GET /favicon.ico HTTP/1.1" 500 59
+112.27.203.124 - - [20/Nov/2018 03:44:16] "GET /path=/usr/deploy/scrapy/py/xin.jpg HTTP/1.1" 200 1089
+Traceback (most recent call last):
+  File "/usr/local/python3.6/lib/python3.6/wsgiref/handlers.py", line 137, in run
+    self.result = application(self.environ, self.start_response)
+  File "/usr/deploy/scrapy/py/hello.py", line 6, in application
+    path=environ['PATH_INFO'].split("=")[1]
+IndexError: list index out of range
+112.27.203.124 - - [20/Nov/2018 03:44:16] "GET /favicon.ico HTTP/1.1" 500 59
+112.27.203.124 - - [20/Nov/2018 03:44:17] "GET /path=/usr/deploy/scrapy/py/xin.jpg HTTP/1.1" 200 1089
+Traceback (most recent call last):
+  File "/usr/local/python3.6/lib/python3.6/wsgiref/handlers.py", line 137, in run
+    self.result = application(self.environ, self.start_response)
+  File "/usr/deploy/scrapy/py/hello.py", line 6, in application
+    path=environ['PATH_INFO'].split("=")[1]
+IndexError: list index out of range
+112.27.203.124 - - [20/Nov/2018 03:44:18] "GET /favicon.ico HTTP/1.1" 500 59
+112.27.203.124 - - [20/Nov/2018 03:44:19] "GET /path=/usr/deploy/scrapy/py/xin.jpg HTTP/1.1" 200 1089
+Traceback (most recent call last):
+  File "/usr/local/python3.6/lib/python3.6/wsgiref/handlers.py", line 137, in run
+    self.result = application(self.environ, self.start_response)
+  File "/usr/deploy/scrapy/py/hello.py", line 6, in application
+    path=environ['PATH_INFO'].split("=")[1]
+IndexError: list index out of range
+112.27.203.124 - - [20/Nov/2018 03:44:20] "GET /favicon.ico HTTP/1.1" 500 59
+112.27.203.124 - - [20/Nov/2018 03:44:21] "GET /path=/usr/deploy/scrapy/py/xin.jpg HTTP/1.1" 200 1089
+Traceback (most recent call last):
+  File "/usr/local/python3.6/lib/python3.6/wsgiref/handlers.py", line 137, in run
+    self.result = application(self.environ, self.start_response)
+  File "/usr/deploy/scrapy/py/hello.py", line 6, in application
+    path=environ['PATH_INFO'].split("=")[1]
+IndexError: list index out of range
+112.27.203.124 - - [20/Nov/2018 03:44:21] "GET /favicon.ico HTTP/1.1" 500 59
+112.27.203.124 - - [20/Nov/2018 03:44:25] "GET /path=/usr/deploy/scrapy/py/xin.jpg HTTP/1.1" 200 1089
+Traceback (most recent call last):
+  File "/usr/local/python3.6/lib/python3.6/wsgiref/handlers.py", line 137, in run
+    self.result = application(self.environ, self.start_response)
+  File "/usr/deploy/scrapy/py/hello.py", line 6, in application
+    path=environ['PATH_INFO'].split("=")[1]
+IndexError: list index out of range
