@@ -7,6 +7,7 @@ Desc :
 #from tutorial.items import HuxiuItem
 import scrapy
 from scrapy.http import Request, FormRequest, HtmlResponse
+from scrapy_splash import SplashRequest
 
 # class HuxiuSpider(scrapy.Spider):
 #     name = "huxiu"
@@ -26,14 +27,34 @@ from scrapy.http import Request, FormRequest, HtmlResponse
 #             yield item
             
 class TestSpider(scrapy.Spider):
+    # name = "test"
+    # allowed_domains = ["jd.com"]
+    # start_urls = [
+    #     "https://www.jd.com/"
+    # ]
+
+    # def parse(self, response):
+    #     print(u'---------我这个是简单的直接获取京东网首页测试---------')
+    #     guessyou = response.xpath('//div[@class="slider focus_list J_focus_list"]/div[@class="slider_list"]/div[@class="slider_wrapper"]/li//img/@src')
+    #     print(guessyou)
+    #     print(u'---------------success----------------')
+
     name = "test"
     allowed_domains = ["jd.com"]
     start_urls = [
         "https://www.jd.com/"
     ]
 
-    def parse(self, response):
-        print(u'---------我这个是简单的直接获取京东网首页测试---------')
+    def start_requests(self):
+        splash_args = {
+            'wait': 0.5,
+        }
+        for url in self.start_urls:
+            yield SplashRequest(url, self.parse_result, endpoint='render.html',
+                                args=splash_args)
+
+    def parse_result(self, response):
+        print(u'----------使用splash爬取京东网首页异步加载内容-----------')
         guessyou = response.xpath('//div[@class="slider focus_list J_focus_list"]/div[@class="slider_list"]/div[@class="slider_wrapper"]/li//img/@src')
         print(guessyou)
         print(u'---------------success----------------')
