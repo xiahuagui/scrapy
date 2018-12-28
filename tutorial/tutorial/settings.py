@@ -8,7 +8,7 @@
 #     https://doc.scrapy.org/en/latest/topics/settings.html
 #     https://doc.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://doc.scrapy.org/en/latest/topics/spider-middleware.html
-
+SPLASH_URL = 'http://116.62.118.136:8050'
 BOT_NAME = 'tutorial'
 
 SPIDER_MODULES = ['tutorial.spiders']
@@ -60,6 +60,13 @@ DEFAULT_REQUEST_HEADERS = {
 #DOWNLOADER_MIDDLEWARES = {
 #    'tutorial.middlewares.TutorialDownloaderMiddleware': 543,
 #}
+
+DOWNLOADER_MIDDLEWARES = {
+    'scrapy_splash.SplashCookiesMiddleware': 723,
+    'scrapy_splash.SplashMiddleware': 725,
+    'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware': 810,
+}
+DUPEFILTER_CLASS = 'scrapy_splash.SplashAwareDupeFilter'
 
 # Enable or disable extensions
 # See https://doc.scrapy.org/en/latest/topics/extensions.html
