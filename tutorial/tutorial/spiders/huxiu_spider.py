@@ -29,7 +29,7 @@ class TestSpider(scrapy.Spider):
     name = "test"
     allowed_domains = ["jd.com"]
     start_urls = [
-        "http://www.jd.com/"
+        "https://www.jd.com/"
     ]
 
     def parse(self, response):
