@@ -1,11 +1,12 @@
 import cv2
+import json
 import matplotlib.pyplot as plt
 import imutils
 from imutils.perspective import four_point_transform
 import json
 
-def main():
-	image = cv2.imread("/usr/www/scrapy/py/xin.jpg")
+def main(path):
+	image = cv2.imread(path)
 	gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 	blurred = cv2.GaussianBlur(gray, (3, 3), 0)
 	blurred = cv2.adaptiveThreshold(blurred,255,cv2.ADAPTIVE_THRESH_MEAN_C,cv2.THRESH_BINARY,51,2)
@@ -46,6 +47,7 @@ def main():
 	rs = {}
 	rs['admin'] = check_admission_ticket(image,gray,docCnt1)
 	rs['data'] = check_choice_question(image,gray,docCnt)  #答题区域
+	#print({"status":1, "data":rs})
 	return json.dumps({"status":1, "data":rs})
 
 def check_admission_ticket(image,gray,docCnt):
@@ -195,5 +197,5 @@ def judge0(x,y):
         return (judgex0(x)+80,judgey0(y))
 
 
-if __name__ == "__main__":
-	main()
+#if __name__ == "__main__":
+#	main()
