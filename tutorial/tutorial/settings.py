@@ -77,7 +77,7 @@ DUPEFILTER_CLASS = 'scrapy_splash.SplashAwareDupeFilter'
 # Configure item pipelines
 # See https://doc.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-   'tutorial.pipelines.HuxiuPipeline': 300,
+   #'tutorial.pipelines.HuxiuPipeline': 300,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
