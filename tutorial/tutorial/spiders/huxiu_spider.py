@@ -33,10 +33,10 @@ class TestSpider(scrapy.Spider):
     ]
 
     def parse(self, response):
-        logging.info(u'---------我这个是简单的直接获取京东网首页测试---------')
+        print(u'---------我这个是简单的直接获取京东网首页测试---------')
         guessyou = response.xpath('//div[@id="J_cate"]/ul[@class="JS_navCtn cate_menu"]/li[1]/a/text()').extract_first()
-        logging.info(u"find：%s" % guessyou)
-        logging.info(u'---------------success----------------')
+        print(u"find：%s" % guessyou)
+        print(u'---------------success----------------')
 
     # def start_requests(self):
     #     yield Request(url = self.start_urls, callback = self.parse)
