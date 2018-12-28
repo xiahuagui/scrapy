@@ -34,8 +34,8 @@ class TestSpider(scrapy.Spider):
 
     def parse(self, response):
         print(u'---------我这个是简单的直接获取京东网首页测试---------')
-        guessyou = response.xpath('//div[@id="J_cate"]/ul[@class="JS_navCtn cate_menu"]/li[1]/a/text()').extract_first()
-        print(u"find：%s" % guessyou)
+        guessyou = response.xpath('//div[@class="slider focus_list J_focus_list"]/div[@class="slider_list"]/div[@class="slider_wrapper"]/li[@class="slider_item focus_item"]//img/@src')
+        print(guessyou)
         print(u'---------------success----------------')
 
     # def start_requests(self):
