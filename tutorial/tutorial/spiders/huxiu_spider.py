@@ -4,7 +4,7 @@
 Topic: sample
 Desc :
 """
-from tutorial.items import HuxiuItem
+#from tutorial.items import HuxiuItem
 import scrapy
 from scrapy.http import Request, FormRequest, HtmlResponse
 
