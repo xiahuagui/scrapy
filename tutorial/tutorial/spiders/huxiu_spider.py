@@ -55,8 +55,8 @@ class TestSpider(scrapy.Spider):
 
     def parse_result(self, response):
         print(u'----------使用splash爬取京东网首页异步加载内容-----------')
-        guessyou = response.xpath('//div[@class="slider focus_list J_focus_list"]/div[@class="slider_list"]/div[@class="slider_wrapper"]/li//img/@src')
-        guessyou = guessyou.decode(guessyou.encoding)
+        guessyou = response.xpath('//div[@class="slider focus_list J_focus_list"]/div[@class="slider_list"]/div[@class="slider_wrapper"]/li//img/@src').extract()
+        #guessyou = guessyou.decode(guessyou.encoding)
         print(guessyou)
         print(u'---------------success----------------')
 
